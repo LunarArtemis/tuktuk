@@ -4,8 +4,8 @@ const cookieSession = require('cookie-session');
 const bcrypt = require('bcrypt');
 const dbConnection = require('./database');
 const {body,validationResult} = require('express-validator');
-
 const app = express();
+
 app.use(express.urlencoded({ extended: false }))
 
 app.set('views' , path.join(__dirname, 'views'));
@@ -16,6 +16,26 @@ app.use(cookieSession({
     keys: ['key1', 'key2'],
     maxAge: 3600 * 1000 //1hr
 }))
+
+// Search endpoint
+app.get('/search', (req, res) => {
+    const searchTerm = req.query.searchTerm;
+    console.log(searchTerm);
+    if (!searchTerm) {
+        return res.status(400).json({error: 'Search term is required'});
+    }
+    const query = `SELECT * FROM customers WHERE customer_first_name LIKE ?`; 
+    const searchValue = `%${searchTerm}%`;
+ 
+    dbConnection.query(query,[searchValue,searchValue],(err, results) => {
+            if (err) {
+                console.error('Error executing search query:', err);
+                return res.status(500).json({error: 'Internal server error'});
+            }
+            console.log("results");
+            res.json(results);
+        });
+});
 
 const ifNotLoggedIn = (req,res,next) => {
     if(!req.session.isLoggedIn){
@@ -73,4 +93,5 @@ app.post("/register" , ifLoggedIn,[
         })
     }
 })
-app.listen(3000,()=> console.log("Server is running...."))
+
+app.listen(3000,()=> console.log("Server is running...."));

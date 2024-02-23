@@ -4,6 +4,6 @@ const dbConnection = mysql.createPool({
     user: "root",
     password: "",
     database: "tuktuk"
-}).promise()
+});
 
 module.exports = dbConnection;
