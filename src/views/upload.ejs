@@ -1,0 +1,60 @@
+<!-- FILEPATH: /c:/Users/seaza/Documents/GitHub/tuktuk/src/views/upload.ejs -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <style>
+    .preview-images img{
+        width: 100%;
+    }
+  </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Upload Form</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+
+<body>
+  <div class="container mx-auto p-4">
+    <h1 class="text-2xl font-bold mb-4">Upload Form</h1>
+    <form action="/upload" method="POST" id="uploadForm" enctype="multipart/form-data">
+      <div class="mb-4">
+        <label for="fileInput" class="block font-medium">Select File:</label>
+        <input type="file" id="fileInput" name="fileInput" class="border border-gray-300 p-2 rounded">
+      </div>
+      <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+        Upload
+      </button>
+    </form>
+  </div>
+  <hr>
+    <div class="container mx-auto p-4">
+        <h1 class="text-2xl font-bold mb-4">Image Preview</h1>
+        <div class="flex flex-wrap">
+            <div class="preview-images"></div>
+        </div>
+    </div>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script>
+    $(document).ready(function() {
+        let imagePreview = function(input, placeToInsertImagePreview){
+            if(input.files){
+                let filesAmount = input.files.length;
+                for(let i = 0; i < filesAmount; i++){
+                    let reader = new FileReader();
+                    reader.onload = function(event){
+                        $($.parseHTML('<img>')).attr('src', event.target.result).appendTo(placeToInsertImagePreview);
+                    }
+                    reader.readAsDataURL(input.files[i]);
+                }
+            }
+        }
+      $('#fileInput').on('change',function(){
+        imagePreview(this,"div.preview-images")
+      })
+    });
+  </script>
+</body>
+
+</html>

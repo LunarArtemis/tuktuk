@@ -1,21 +1,23 @@
-const dbconfig = require('../config/db.config');
+const dbConfig = require('../config/db.config');
 const Sequelize = require('sequelize');
-const sequelize = new Sequelize(dbConfig.DB, dbConfig.changeUser, dbConfig.PASSWORD,{
+const sequelize = new Sequelize(dbConfig.DB, dbConfig.USER, dbConfig.PASSWORD,{
     host: dbConfig.HOST,
     dialect: dbConfig.dialect ,
     operatorsAliases: false,
 
     pool:{
-        max: dbconfig.pool.max,
-        min: dbconfig.pool.min,
-        acquire: dbconfig.pool.acquire,
-        idle: dbconfig.pool.idle
+        max: dbConfig.pool.max,
+        min: dbConfig.pool.min,
+        acquire: dbConfig.pool.acquire,
+        idle: dbConfig.pool.idle
     }
 })
 
 const db = {};
 
 db.Sequelize = Sequelize;
-db.Sequelize = Sequelize;
+db.sequelize = sequelize;
 
-db.images = require("./image.model.js")(sequelize,Sequelize)
+db.images = require("./images.model.js")(sequelize,Sequelize)
+
+module.exports = db;

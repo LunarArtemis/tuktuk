@@ -8,6 +8,9 @@ module.exports = (sequelize, DataType) => {
         },
         data:{
             type: DataType.BLOB('long')
+        },
+        tag_img:{
+            type: DataType.STRING
         }
     })
     return Image;
