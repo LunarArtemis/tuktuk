@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 22, 2024 at 11:19 PM
+-- Generation Time: Feb 23, 2024 at 12:08 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -20,6 +20,19 @@ SET time_zone = "+00:00";
 --
 -- Database: `tuktuk`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `images`
+--
+
+CREATE TABLE `images` (
+  `id_img` int(11) NOT NULL,
+  `path` text NOT NULL,
+  `date_uploaded` date NOT NULL DEFAULT current_timestamp(),
+  `tag_img` text DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -43,6 +56,12 @@ INSERT INTO `user` (`id`, `username`, `password`) VALUES
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `images`
+--
+ALTER TABLE `images`
+  ADD PRIMARY KEY (`id_img`);
 
 --
 -- Indexes for table `user`
