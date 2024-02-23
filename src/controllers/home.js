@@ -5,9 +5,13 @@ const home = (req,res) => {
 const upload = (req,res) =>{
     return res.render(path.join(`${__dirname}/../views/upload.ejs`))
 }
+const signin = (req,res) =>{
+    return res.render(path.join(`${__dirname}/../views/login-register.ejs`))
+}
 
 module.exports = {
     getHome: home,
-    getUpload: upload
+    getUpload: upload,
+    getSignin: signin
 }
 

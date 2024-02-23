@@ -4,6 +4,7 @@ const cookieSession = require('cookie-session');
 const bcrypt = require('bcrypt');
 const dbConnection = require('../config/db.config');
 const {body,validationResult} = require('express-validator');
+const homeController = require('../controllers/home');
 
 const app = express();
 app.use(express.urlencoded({ extended: false }))
@@ -26,7 +27,7 @@ const ifNotLoggedIn = (req,res,next) => {
 
 const ifLoggedIn = (req,res,next)=>{
     if(req.session.isLoggedIn){
-        return res.redirect('/home');
+        return res.redirect('/');
     }
     next();
 }
@@ -35,7 +36,7 @@ const ifLoggedIn = (req,res,next)=>{
 app.get('/',ifNotLoggedIn,(req,res,next)=>{
     dbConnection.execute("SELECT username FROM user WHERE id=?",[req.session.userID])
     .then(([rows]) => {
-        res.render('home', {
+        res.render(homeController.getSignin, {
             name: rows[0].name
         })
     })
