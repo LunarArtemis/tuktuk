@@ -2,7 +2,7 @@ const express = require('express');
 const path = require('path');
 const cookieSession = require('cookie-session');
 const bcrypt = require('bcrypt');
-const dbConnection = require('./database');
+const dbConnection = require('../config/db.config');
 const {body,validationResult} = require('express-validator');
 
 const app = express();
