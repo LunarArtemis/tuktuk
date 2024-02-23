@@ -19,7 +19,7 @@ app.use(cookieSession({
 
 const ifNotLoggedIn = (req,res,next) => {
     if(!req.session.isLoggedIn){
-        return res.render('login-register');
+        return res.render('home'); //res.render('login-register');
     }
     next();
 }
