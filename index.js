@@ -17,25 +17,7 @@ app.use(cookieSession({
     maxAge: 3600 * 1000 //1hr
 }))
 
-// Search endpoint
-app.get('/search', (req, res) => {
-    const searchTerm = req.query.searchTerm;
-    console.log(searchTerm);
-    if (!searchTerm) {
-        return res.status(400).json({error: 'Search term is required'});
-    }
-    const query = `SELECT * FROM customers WHERE customer_first_name LIKE ?`; 
-    const searchValue = `%${searchTerm}%`;
- 
-    dbConnection.query(query,[searchValue,searchValue],(err, results) => {
-            if (err) {
-                console.error('Error executing search query:', err);
-                return res.status(500).json({error: 'Internal server error'});
-            }
-            console.log("results");
-            res.json(results);
-        });
-});
+
 
 const ifNotLoggedIn = (req,res,next) => {
     if(!req.session.isLoggedIn){
