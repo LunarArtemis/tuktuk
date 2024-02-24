@@ -39,6 +39,27 @@ const ifLoggedIn = (req,res,next)=>{
     next();
 }
 
+// Search endpoint
+app.get('/search', async (req, res) => {
+    const searchTerm = req.query.searchTerm;
+    console.log(searchTerm);
+    if (!searchTerm) {
+        return res.status(400).json({error: 'Search term is required'});
+    }
+    const query = `SELECT * FROM customers WHERE customer_first_name LIKE ?`;
+    const searchValue = `%${searchTerm}%`;
+
+    try {
+        const [results, fields] = await dbConnection.query(query, [searchValue, searchValue]);
+        console.log("results", results);
+        res.json(results);
+    } catch (err) {
+        console.error('Error executing search query:', err);
+        res.status(500).json({error: 'Internal server error'});
+    }
+});
+
+
 //root page
 app.get('/',ifNotLoggedIn,(req,res,next)=>{
     dbConnection.execute("SELECT username FROM user WHERE id=?",[req.session.userID])
