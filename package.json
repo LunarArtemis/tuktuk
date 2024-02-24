@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "nodemon index"
+    "dev": "nodemon server"
   },
   "keywords": [],
   "author": "",
@@ -19,10 +19,12 @@
     "express-mysql": "^0.0.1",
     "express-session": "^1.18.0",
     "express-validator": "^7.0.1",
+    "multer": "^1.4.5-lts.1",
     "mysql": "^2.18.1",
     "mysql2": "^3.9.1",
     "nodemon": "^3.0.3",
-    "path": "^0.12.7"
+    "path": "^0.12.7",
+    "sequelize": "^6.37.1"
   },
   "devDependencies": {
     "autoprefixer": "^10.4.17",
