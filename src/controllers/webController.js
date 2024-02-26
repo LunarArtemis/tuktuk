@@ -32,7 +32,6 @@ const register = (req,res)=>{
 module.exports = {
     getHome: home,
     getUpload: upload,
-    getSignin: signin,
     getLogin: login,
     getRegister: register
 }

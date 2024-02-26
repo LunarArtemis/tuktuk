@@ -14,8 +14,8 @@
         <div class="flex items-center justify-between bg-blue-500 p-4">
             <h1 class="text-white text-2xl font-semibold">Home</h1>
             <a href="/Uploaded" class="text-white">Upload</a>
-            <% if (loggedIn) { %>
-                <a href="/logout" class="text-white">Logout</a>
+            <% if(loggedIn) { %>
+                <a href="/logout" class="text-white bg-red-500">Logout</a>
             <% } if(!loggedIn) { %>
             <a href="/login" class="text-white">Sign in</a>
             <% } %>
