@@ -1,22 +1,21 @@
 const express = require('express');
 const app = express();
+const ejs = require('ejs')
+const mongoose = require('mongoose')
+const expressSession = require('express-session')
+const flash = require('connect-flash')
 const path = require('path');
 const db = require("./src/models")
 const initRoutes = require('./src/routes/web')
-const cookieSession = require('cookie-session');
 const {body,validationResult} = require('express-validator');
 const dbConnection = require('./src/config/dbConnect');
 const bcrypt = require('bcrypt');
 const homeController = require('./src/controllers/home');
 
 global.__basedir = __dirname;
-
+app.use(express.json());
 app.use(express.urlencoded({ extended: true}))
-app.use(cookieSession({
-    name:'session',
-    keys: ['key1', 'key2'],
-    maxAge: 3600 * 1000 //1hr
-}))
+app.use(flash())
 app.set('views' , path.join(__dirname, 'src/views'));
 app.set('view engine', 'ejs');
 initRoutes(app);
