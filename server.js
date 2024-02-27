@@ -8,7 +8,9 @@ const path = require('path');
 const db = require("./src/models")
 const initRoutes = require('./src/routes/web')
 const dbConnection = require('./src/config/dbConnect')
-const dotenv = require('dotenv')
+const dotenv = require('dotenv');
+const User = require('./src/models/User');
+const dbMongo = require('./src/config/dbMongo');
 
 dotenv.config()
 
@@ -34,7 +36,14 @@ app.use('*',(req,res,next)=>{
     role = req.session.role;
     next();
 })
-//
+
+//search in mongodb
+app.get('/search:username', async (req, res) => {
+    const username = req.params.username;
+    const user = await User.findOne
+    ({username: username});
+    res.json(user);
+});
 
 app.set('views' , path.join(__dirname, 'src/views'));
 app.set('view engine', 'ejs');
@@ -44,27 +53,6 @@ initRoutes(app);
 //     console.log('Drop and Resync db');
 // })
 db.sequelize.sync();
-
-
-// Search endpoint
-app.get('/search', async (req, res) => {
-    const searchTerm = req.query.searchTerm;
-    console.log(searchTerm);
-    if (!searchTerm) {
-        return res.status(400).json({error: 'Search term is required'});
-    }
-    const query = `SELECT * FROM customers WHERE customer_first_name LIKE ?`;
-    const searchValue = `%${searchTerm}%`;
-
-    try {
-        const [results, fields] = await dbConnection.query(query, [searchValue, searchValue]);
-        console.log("results", results);
-        res.json(results);
-    } catch (err) {
-        console.error('Error executing search query:', err);
-        res.status(500).json({error: 'Internal server error'});
-    }
-});
 
 
 app.use('/',(req,res)=>{
