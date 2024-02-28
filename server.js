@@ -37,7 +37,7 @@ app.use('*',(req,res,next)=>{
     next();
 })
 
-//search
+//search endpoint
 app.get('/search/:key', async (req, res) => {
     console.log(req.params.key);
     let data = await User.find(
