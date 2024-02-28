@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login and Registration</title>
+    <!-- Include Tailwind CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+
+<body class="bg-gray-100 flex items-center justify-center h-screen">
+    <!-- Hello -->
+    <div class="max-w-md w-full p-6 bg-white rounded-lg shadow-md">
+        <h2 class="text-2xl font-semibold mb-6 text-center">Login</h2>
+        <form action="/user/login" method="post" id="loginForm" class="space-y-4">
+            <div>
+                <label for="username" class="block mb-1">Username</label>
+                <input type="text" id="username" name="username" class="w-full border-gray-300 rounded-md"
+                    value="<%=(locals.old_data) ? old_data.username : '' %>">
+            </div>
+            <div>
+                <label for="password" class="block mb-1">Password</label>
+                <input type="password" id="password" name="password" class="w-full border-gray-300 rounded-md"
+                    value="<%=(locals.old_data) ? old_data.password : '' %>">
+            </div>
+            <% if (locals.login_errors){ login_errors.forEach(function(error_msg) { %>
+            <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">
+                <%= error_msg %>
+            </div>
+            <% }) } %>
+            <button type="submit"
+                class="w-full bg-blue-500 text-white py-2 rounded-md hover:bg-blue-600 transition-colors duration-300">Login</button>
+        </form>
+</body>
+</html>
