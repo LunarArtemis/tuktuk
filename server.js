@@ -37,12 +37,17 @@ app.use('*',(req,res,next)=>{
     next();
 })
 
-//search in mongodb
-app.get('/search:username', async (req, res) => {
-    const username = req.params.username;
-    const user = await User.findOne
-    ({username: username});
-    res.json(user);
+//search
+app.get('/search/:key', async (req, res) => {
+    console.log(req.params.key);
+    let data = await User.find(
+        { 
+            "$or": [
+                {username: {$regex: req.params.key}}
+            ]
+        }
+    );
+    res.send(data);
 });
 
 app.set('views' , path.join(__dirname, 'src/views'));

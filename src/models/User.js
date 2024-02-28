@@ -1,10 +1,9 @@
 const mongoose = require('mongoose')
-const Schema = mongoose.Schema
 const bcrypt = require('bcrypt')
 const dotenv = require('dotenv')
 
 dotenv.config()
-const UserSchema = new Schema({
+const UserSchema = new mongoose.Schema({
     username:{
         type: String,
         required: [true,'Please provide a username'],
@@ -31,5 +30,5 @@ UserSchema.pre('save', function(next) {
     })
 })
 
-const User = mongoose.model('User', UserSchema)
+const User = mongoose.model('users', UserSchema)
 module.exports = User
