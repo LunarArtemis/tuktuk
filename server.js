@@ -57,7 +57,7 @@ initRoutes(app);
 // db.sequelize.sync({force:true}).then(() => {
 //     console.log('Drop and Resync db');
 // })
-db.sequelize.sync();
+//db.sequelize.sync();
 
 
 app.use('/',(req,res)=>{

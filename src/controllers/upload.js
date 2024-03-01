@@ -1,38 +1,31 @@
-const fs = require('fs');
-const db = require('../models');
-const Image = db.images;
+const expressHandler = require('express-async-handler');
+const Image = require('../models/images.model');
 
-const uploadFiles = async (req,res) => {
+const uploadFiles = expressHandler(async(req,res)=>{
     try{
         console.log(req.file);
 
         if(req.file == undefined){
             return res.send("You must select a file to upload")
         }
-
-        Image.create({
+        
+        const image = Image({
+            title: req.body.inputName,
             type: req.file.mimetype,
-            name: req.file.originalname,
-            data: fs.readFileSync(
-                __basedir + "/resources/static/assets/uploads/" + req.file.filename
-            ),
-            tag_img: req.body.inputTag
+            description: req.body.inputDescription,
+            filename: req.file.originalname,
+            filepath: "/resources/static/assets/uploads/" + req.file.filename,
+            tags: req.body.inputTag.split(',')
+        });
 
-        }).then((image) => {
-            fs.writeFileSync(
-                __basedir + "/resources/static/assets/tmp/" + image.name, image.data
-                )
+        await image.save();
 
-            return res.send("File successfully uploaded")
-        })
-
-
-    }catch(error){
+        return res.send("File successfully uploaded");
+    } catch(error){
         console.log(error);
-        return res.send(`Error when trying upload images: ${error}`)
+        return res.send(`Error when trying to upload images: ${error}`);
     }
-}
-
+})
 module.exports = {
     uploadFiles
 }
