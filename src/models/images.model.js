@@ -21,6 +21,10 @@ const ImageSchema = new Schema({
       type: String,
       required: true
     },
+    uploaded_by:{
+      type: String,
+      required: true
+    },
     filepath:{
       type: String,
       required: true

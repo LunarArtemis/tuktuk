@@ -11,11 +11,11 @@ let storage = multer.diskStorage({
     destination: (req,file,cb) => {
         cb(null, __basedir + "/resources/static/assets/uploads/");
     },
-    filename:(req,file,cb)=>{
+    filename: (req, file, cb) => {   
         cb(null, `${Date.now()}-image-${file.originalname}`);
     }
 })
 
 let uploadFile = multer({storage: storage, fileFilter: imageFilter});
-
-module.exports = uploadFile;
+module.exports = uploadFile
+    

@@ -8,19 +8,28 @@ const uploadFiles = expressHandler(async(req,res)=>{
         if(req.file == undefined){
             return res.send("You must select a file to upload")
         }
-        
-        const image = Image({
-            title: req.body.inputName,
-            type: req.file.mimetype,
-            description: req.body.inputDescription,
-            filename: req.file.originalname,
-            filepath: "/resources/static/assets/uploads/" + req.file.filename,
-            tags: req.body.inputTag.split(',')
-        });
+        console.log(req.body);
+        const existingTitle = await Image.findOne({ title: req.body.inputName })
+        if (existingTitle) {
+            const validationErrors = "Image title already exists";
+            req.flash('validationErrors', validationErrors);
+            req.flash('data', req.body);
+            return res.redirect('/upload');
+        } else {
+            const image = Image({
+                title: req.body.inputName,
+                type: req.file.mimetype,
+                uploaded_by: req.session.userId,
+                description: req.body.inputDescription,
+                filename: req.file.originalname,
+                filepath: "/resources/static/assets/uploads/" + req.file.filename,
+                tags: req.body.inputTag.split(',')
+            });
 
-        await image.save();
+            await image.save();
+            return res.redirect('/upload');
 
-        return res.send("File successfully uploaded");
+        }
     } catch(error){
         console.log(error);
         return res.send(`Error when trying to upload images: ${error}`);

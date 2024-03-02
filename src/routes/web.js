@@ -18,7 +18,7 @@ let routes = (app) => {
     router.get('/logout', logoutController);
     
     //post
-    router.post('/user/upload', upload.single("fileInput"), uploadController.uploadFiles);
+    router.post('/user/upload',upload.single("fileInput"), uploadController.uploadFiles);
     router.post('/user/register',redirectifAuth,storeController)
     router.post('/user/login',redirectifAuth,loginUserController)
     return app.use("/",router);

@@ -5,12 +5,13 @@ const mongoose = require('mongoose')
 const expressSession = require('express-session')
 const flash = require('connect-flash')
 const path = require('path');
-const db = require("./src/models")
+// const db = require("./src/models")
 const initRoutes = require('./src/routes/web')
 const dbConnection = require('./src/config/dbConnect')
 const dotenv = require('dotenv');
 const User = require('./src/models/User');
 const dbMongo = require('./src/config/dbMongo');
+const { truncateSync } = require('fs');
 
 dotenv.config()
 
