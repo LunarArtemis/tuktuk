@@ -7,7 +7,6 @@ const flash = require('connect-flash')
 const path = require('path');
 // const db = require("./src/models")
 const initRoutes = require('./src/routes/web')
-const dbConnection = require('./src/config/dbConnect')
 const dotenv = require('dotenv');
 const User = require('./src/models/User');
 const dbMongo = require('./src/config/dbMongo');
@@ -40,11 +39,10 @@ app.use('*',(req,res,next)=>{
 
 //search endpoint
 app.get('/search/:key', async (req, res) => {
-    console.log(req.params.key);
     let data = await User.find(
         { 
             "$or": [
-                {username: {$regex: req.params.key}}
+                {username: {$regex: req.params.key}} //search by username
             ]
         }
     );
