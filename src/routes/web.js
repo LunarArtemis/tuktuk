@@ -13,7 +13,7 @@ let routes = (app) => {
     app.set('view engine', 'ejs');
     //get
     router.get('/', webController.getHome)
-    router.get('/upload', webController.getUpload);
+    router.get('/upload',webController.getUpload);
     router.get('/login',redirectifAuth, webController.getLogin);
     router.get('/register',redirectifAuth, webController.getRegister);
     router.get('/logout', logoutController);
