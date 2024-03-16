@@ -77,29 +77,14 @@
         </nav>
     </header>
 
-    <!-- searchbox -->
-    <div class="flex items-center justify-center h-screen">
-        <div class="max-w-md w-full p-6 bg-white rounded-lg shadow-md">
-            <h2 class="text-xl font-semibold mb-10 text-center">Search</h2>
-            <form id="searchForm" class="space-y-6">
-                <input id="searchInput" type="text" class="w-full border-gray-300 rounded-md" placeholder="Search...">
-                <button type="submit"
-                    class="w-full bg-blue-500 text-white py-2 rounded-md hover:bg-blue-600 transition-colors duration-300">Search</button>
-            </form>
+    <% data.forEach(function(image) { %>
+        <div>
+            <h2 class=""><%= image.title %></h2>
+            <img src="<%= image.filename %>" alt="<%= image.description %>">
+            <p><%= image.description %></p>
+            <p>Tags: <%= image.tags.join(', ') %></p>
         </div>
-    </div>
-
-    <script>
-        document.getElementById('searchForm').addEventListener('submit', function (event) {
-            event.preventDefault(); // Prevent default form submission
-
-            // Get the value from the input field
-            const key = document.getElementById('searchInput').value.trim();
-
-            // Redirect to the search endpoint with the key as a parameter
-            window.location.href = `/search/${encodeURIComponent(key)}`;
-        });
-    </script>
+    <% }); %>
     
 </body>
 
