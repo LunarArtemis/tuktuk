@@ -5,8 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "nodemon server",
-    "build": "npx tailwindcss -i ./public/css/input.css -o ./public/css/globals.css --watch" 
+    "dev": "nodemon server"
   },
   "keywords": [],
   "author": "",
@@ -29,8 +28,5 @@
     "mysql2": "^3.9.1",
     "nodemon": "^3.1.0",
     "path": "^0.12.7"
-  },
-  "devDependencies": {
-    "tailwindcss": "^3.4.1"
   }
 }
