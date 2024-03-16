@@ -8,8 +8,8 @@ module.exports = (req,res)=>{
         username = data.username
         password = data.password
     }
-    res.render('/views/login.ejs',{
-        errors: req.flash('validationError'),
+    res.render(path.join(`${__dirname}/../views/login.ejs`),{
+        errors: req.flash('validationErrors'),
         username:username,
         password:password
     })
