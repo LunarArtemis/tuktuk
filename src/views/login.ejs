@@ -58,14 +58,14 @@
                                     required
                                     value="<%=(locals.old_data) ? old_data.password : '' %>">
                             </div>
-                            <% if (locals.login_errors){
-                            login_errors.forEach(function(error_msg) { %>
+                            <% if(errors != null && errors.length > 0) { %>
+                                <% for (let i = 0; i < errors.length; i++) { %>
                             <div
                                 class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative"
                                 role="alert">
-                                <%= error_msg %>
+                                <%= errors[i] %>
                             </div>
-                            <% }) } %>
+                            <% } } %>
 
                             <!-- Remember Me -->
                             <div class="flex items-center justify-between">
@@ -93,6 +93,7 @@
                                     class="font-medium text-blue-600 hover:underline dark:text-blue-500">Sign
                                     up</a>
                             </p>
+                            
                         </form>
                     </div>
                 </div>

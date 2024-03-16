@@ -38,18 +38,6 @@ app.use('*',(req,res,next)=>{
     next();
 })
 
-//search endpoint
-app.get('/search/:key', async (req, res) => {
-    let data = await User.find(
-        { 
-            "$or": [
-                {username: {$regex: req.params.key}} //search by username
-            ]
-        }
-    );
-    res.send(data);
-});
-
 app.set('views' , path.join(__dirname, 'src/views'));
 app.set('view engine', 'ejs');
 initRoutes(app);

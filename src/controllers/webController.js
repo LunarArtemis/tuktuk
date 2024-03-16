@@ -10,7 +10,7 @@ const signin = (req,res) =>{
     res.render(path.join(`${__dirname}/../views/login-register.ejs`))
 }
 const login = (req,res) =>{
-    res.render(path.join(`${__dirname}/../views/login.ejs`))
+    res.render(path.join(`${__dirname}/../controller/loginPageController.ejs`))
 }
 const register = (req,res)=>{
     let username =""

@@ -7,15 +7,30 @@ const storeController = require('../controllers/storeUserController');
 const loginUserController = require('../controllers/loginUserController');
 const logoutController = require('../controllers/logoutController');
 const redirectifAuth = require('../middleware/redirectifAuth');
+const Image = require('../models/images.model.js');
 
 let routes = (app) => {
     app.set('view engine', 'ejs');
     //get
     router.get('/', webController.getHome)
-    router.get('/upload', webController.getUpload);
+    router.get('/upload',webController.getUpload);
     router.get('/login',redirectifAuth, webController.getLogin);
     router.get('/register',redirectifAuth, webController.getRegister);
     router.get('/logout', logoutController);
+    router.get('/search/:key', async (req, res) => {
+        let data = await Image.find(
+            { 
+                "$or": [
+                    { "title": { "$regex": req.params.key, "$options": "i" } },
+                    { "description": { "$regex": req.params.key, "$options": "i" } },
+                    { "tags": { "$regex": req.params.key, "$options": "i" } }
+                ]
+            }
+        );
+        //show image
+        res.render('search', { data: data });
+    });
+
     
     //post
     router.post('/user/upload',upload.single("fileInput"), uploadController.uploadFiles);

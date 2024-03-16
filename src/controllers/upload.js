@@ -1,9 +1,10 @@
 const expressHandler = require('express-async-handler');
 const Image = require('../models/images.model');
+const fs = require('fs');
 
 const uploadFiles = expressHandler(async(req,res)=>{
     try{
-        console.log(req.file);
+        console.log(req.file.path);
 
         if(req.file == undefined){
             return res.send("You must select a file to upload")
@@ -12,8 +13,16 @@ const uploadFiles = expressHandler(async(req,res)=>{
         const existingTitle = await Image.findOne({ title: req.body.inputName })
         if (existingTitle) {
             const validationErrors = "Image title already exists";
+            filePath = req.file.path;
             req.flash('validationErrors', validationErrors);
             req.flash('data', req.body);
+            fs.unlink(filePath, (err) => {
+            if (err) {
+                console.error('Error occurred while deleting file:', err);
+            }else{
+                console.log('File deleted successfully');
+            }
+        });
             return res.redirect('/upload');
         } else {
             const image = Image({
