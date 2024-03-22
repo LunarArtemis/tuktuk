@@ -111,7 +111,7 @@
     <% data.forEach(function(image) { %>
         <div>
             <h2 class=""><%= image.title %></h2>
-            <img src="<%= image.filename %>" alt="<%= image.description %>">
+            <img src="<%= image.filepath.replace('/resources', '') %>" alt="<%= image.description %>">
             <p><%= image.description %></p>
             <p>Tags: <%= image.tags.join(', ') %></p>
         </div>
