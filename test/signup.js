@@ -1,3 +1,11 @@
+//***************************************************************
+
+                        //ยังไม่ใช้ไฟล์นี้
+
+//***************************************************************
+
+
+
 const User = require('../src/models/User');
 const StoreUser = require('../src/controllers/storeUserController')
 describe('User Registration', () => {
@@ -62,8 +70,8 @@ describe('User Registration', () => {
     // Extract validation errors from the error object
     const validationErrors = Object.values(error.errors).map(err => err.message);
     // Expect req.flash to have been called with the validation errors
-    //expect(req.flash).toHaveBeenCalledWith('validationErrors', validationErrors);
-    //expect(req.flash).toHaveBeenCalledWith('data', req.body);
+    expect(req.flash).toHaveBeenCalledWith('validationErrors', validationErrors);
+    expect(req.flash).toHaveBeenCalledWith('data', req.body);
     expect(res.redirect).toHaveBeenCalledWith('/login');
 });
 
