@@ -1,34 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuites name="jest tests" tests="4" failures="3" errors="0" time="1.172">
-  <testsuite name="User Registration" errors="0" failures="3" skipped="0" timestamp="2024-03-28T18:09:41" time="1.071" tests="4">
-    <testcase classname="User Registration should redirect to /login if user already exists" name="User Registration should redirect to /login if user already exists" time="0.008">
+<testsuites name="jest tests" tests="4" failures="2" errors="0" time="1.137">
+  <testsuite name="User Registration" errors="0" failures="2" skipped="0" timestamp="2024-03-28T20:02:25" time="1.044" tests="4">
+    <testcase classname="User Registration should redirect to /login if user already exists" name="User Registration should redirect to /login if user already exists" time="0.004">
     </testcase>
-    <testcase classname="User Registration should create a new user and redirect to /" name="User Registration should create a new user and redirect to /" time="0.014">
-      <failure>Error: expect(jest.fn()).toHaveBeenCalledWith(...expected)
-
-Expected: &quot;/&quot;
-
-Number of calls: 0
-    at Object.toHaveBeenCalledWith (C:\Users\seaza\Documents\GitHub\tuktuk\test\sigin.test.js:44:30)
-    at processTicksAndRejections (node:internal/process/task_queues:95:5)</failure>
+    <testcase classname="User Registration should create a new user and redirect to /" name="User Registration should create a new user and redirect to /" time="0.017">
     </testcase>
     <testcase classname="User Registration should handle validation errors when creating a new user" name="User Registration should handle validation errors when creating a new user" time="0.002">
       <failure>Error: expect(jest.fn()).toHaveBeenCalledWith(...expected)
 
-Expected: &quot;validationErrors&quot;, Any&lt;Array&gt;
+Expected: &quot;/login&quot;
 
 Number of calls: 0
-    at Object.toHaveBeenCalledWith (C:\Users\seaza\Documents\GitHub\tuktuk\test\sigin.test.js:59:27)
+    at Object.toHaveBeenCalledWith (C:\Users\seaza\Documents\GitHub\tuktuk\test\signup.test.js:67:26)
     at processTicksAndRejections (node:internal/process/task_queues:95:5)</failure>
     </testcase>
-    <testcase classname="User Registration should handle errors when checking user existence" name="User Registration should handle errors when checking user existence" time="0.007">
+    <testcase classname="User Registration should handle errors when checking user existence" name="User Registration should handle errors when checking user existence" time="0.006">
       <failure>Error: expect(received).toHaveBeenCalledWith(...expected)
 
 Matcher error: received value must be a mock or spy function
 
 Received has type:  function
 Received has value: [Function log]
-    at Object.toHaveBeenCalledWith (C:\Users\seaza\Documents\GitHub\tuktuk\test\sigin.test.js:71:29)
+    at Object.toHaveBeenCalledWith (C:\Users\seaza\Documents\GitHub\tuktuk\test\signup.test.js:77:29)
     at processTicksAndRejections (node:internal/process/task_queues:95:5)</failure>
     </testcase>
   </testsuite>
