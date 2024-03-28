@@ -18,6 +18,7 @@ let routes = (app) => {
     router.get('/login',redirectifAuth, loginController);
     router.get('/register',redirectifAuth, webController.getRegister);
     router.get('/logout', logoutController);
+    router.get('/edit', webController.getEdit);
     router.get('/search/:key', async (req, res) => {
         let data = await Image.find(
             { 
