@@ -25,9 +25,9 @@ UserSchema.pre('save', function(next) {
     bcrypt.hash(user.password,parseInt(salt_round)).then(hash => {
         user.password = hash
         next()
-    }).catch(err => {
-        console.error(err)
-    })
+    })//.catch(err => {
+    //     console.error(err)
+    // })
 })
 
 const User = mongoose.model('users', UserSchema)

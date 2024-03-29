@@ -4,6 +4,7 @@ const webController = require('../controllers/webController.js');
 const uploadController = require('../controllers/upload');
 const upload = require('../middleware/upload');
 const storeController = require('../controllers/storeUserController');
+const loginController = require('../controllers/loginPageController');
 const loginUserController = require('../controllers/loginUserController');
 const logoutController = require('../controllers/logoutController');
 const redirectifAuth = require('../middleware/redirectifAuth');
@@ -14,9 +15,10 @@ let routes = (app) => {
     //get
     router.get('/', webController.getHome)
     router.get('/upload',webController.getUpload);
-    router.get('/login',redirectifAuth, webController.getLogin);
+    router.get('/login',redirectifAuth, loginController);
     router.get('/register',redirectifAuth, webController.getRegister);
     router.get('/logout', logoutController);
+    router.get('/edit', webController.getEdit);
     router.get('/search/:key', async (req, res) => {
         let data = await Image.find(
             { 

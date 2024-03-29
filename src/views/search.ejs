@@ -7,6 +7,11 @@
     <title>HomePage</title>
     <!-- Include Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
+    <link
+        href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.css"
+        rel="stylesheet" />
+    <script
+        src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>
 
     <script>
         tailwind.config = {
@@ -25,12 +30,12 @@
 <body class="bg-gray-50">
 
     <header>
-        <nav class="bg-white border-gray-200 px-4 lg:px-6 py-2.5">
+        <nav class="bg-[#d3cbe7] border-gray-200 px-4 lg:px-6 py-2.5">
             <div class="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl">
                 <a href="/" class="flex items-center">
-                    <img src="https://flowbite.com/docs/images/logo.svg" class="mr-3 h-6 sm:h-9" alt="Flowbite Logo" />
+                    <img src="/static/assets/uploads/tuktuk.png" class="mr-3 h-6 sm:h-9" />
                     <span
-                        class="text-gray-900 self-center text-xl font-semibold whitespace-nowrap">TukTuk</span>
+                        class="text-[#37294c] self-center text-xl font-bold whitespace-nowrap">TukTuk</span>
                 </a>
                 <div class="flex items-center lg:order-2">
 
@@ -40,7 +45,7 @@
                             out</a>
                         <% } if(!loggedIn) { %>
                             <a href="/login"
-                                class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5 mr-2">Log
+                                class="text-white bg-[#8e70b7] hover:bg-[#7d5da4] focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5 mr-2">Log
                                 in</a>
                             <% } %>
                                 <button data-collapse-toggle="mobile-menu-2" type="button"
@@ -71,17 +76,42 @@
                             </a>
                         </li>
                     </ul>
-
                 </div>
             </div>
         </nav>
     </header>
-    <h1><b>เดี๋ยวมาแก้เรื่องรูปไม่ขึ้นที่หลัง</b></h1>
+
+
+    <!-- card search box -->
+    <div class="rounded-md flex flex-row justify-center items-center h-96">
+        <div class="flex flex-col items-center">
+            <h1 class="text-4xl font-bold text-gray-800 mb-7">Welcome to TukTuk</h1>
+            <form id="searchForm" class="flex items-center">
+                <input id="searchInput" type="text"
+                    class="w-96 h-12 px-4 text-lg text-gray-800 border-2 border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#8e70b7] focus:border-transparent"
+                    placeholder="Search for an images" />
+                <button type="submit"
+                    class="text-white bg-[#8e70b7] hover:bg-[#7d5da4] focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-lg px-4 py-2 ml-2">Search</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('searchForm').addEventListener('submit', function (event) {
+            event.preventDefault(); // Prevent default form submission
+
+            // Get the value from the input field
+            const key = document.getElementById('searchInput').value.trim();
+
+            // Redirect to the search endpoint with the key as a parameter
+            window.location.href = `/search/${encodeURIComponent(key)}`;
+        });
+    </script>
 
     <% data.forEach(function(image) { %>
         <div>
             <h2 class=""><%= image.title %></h2>
-            <img src="<%= image.filename %>" alt="<%= image.description %>">
+            <img src="<%= image.filepath.replace('/resources', '') %>" alt="<%= image.description %>">
             <p><%= image.description %></p>
             <p>Tags: <%= image.tags.join(', ') %></p>
         </div>

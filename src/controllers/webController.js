@@ -9,9 +9,10 @@ const upload = (req,res) =>{
 const signin = (req,res) =>{
     res.render(path.join(`${__dirname}/../views/login-register.ejs`))
 }
-const login = (req,res) =>{
-    res.render(path.join(`${__dirname}/../controller/loginPageController.ejs`))
+const edit = (req,res) =>{
+    res.render(path.join(`${__dirname}/../views/edit.ejs`))
 }
+
 const register = (req,res)=>{
     let username =""
     let password=""
@@ -32,7 +33,7 @@ const register = (req,res)=>{
 module.exports = {
     getHome: home,
     getUpload: upload,
-    getLogin: login,
-    getRegister: register
+    getRegister: register,
+    getEdit: edit
 }
 

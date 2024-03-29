@@ -12,10 +12,16 @@ module.exports = (req,res)=>{
                     req.session.userName=user.role
                     res.redirect('/')
                 }else{
+                    const validationErrors = "User or Password Incorrect";
+                    req.flash('validationErrors', validationErrors);
+                    req.flash('data', req.body);
                     res.redirect('/login')
                 }
             })
         }else{
+            const validationErrors = "User not found";
+            req.flash('validationErrors', validationErrors);
+            req.flash('data', req.body);
             res.redirect('/login')
         }
     })

@@ -6,60 +6,60 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Login and Registration</title>
         <!-- Include Tailwind CSS -->
-        <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
-        
+        <script src="https://cdn.tailwindcss.com"></script>
         <link
             href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.css"
             rel="stylesheet" />
         <script
             src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>
 
-        <link href="css/bg.css" rel="stylesheet" type="text/css">
-
     </head>
 
-    <body>
-        <section class="fixed inset-x-0 mx-auto top-0 sm:w-3/4 md:w-2/4 md:top-auto ">
-            <div
-                class="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
+    <body class="bg-gray-50">
+        
+        <section>
+            <div class="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
+                
                 <a href="#"
-                    class="flex items-center mb-6 text-2xl font-semibold text-white dark:text-white">
+                    class="flex items-center mb-6 text-2xl font-semibold text-gray-900">
                     <img class="w-8 h-8 mr-2"
-                        src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/logo.svg"
+                        src="static/assets/uploads/tuktuk.png"
                         alt="logo">
                     TukTuk
                 </a>
 
                 <!-- Sign In -->
+                
                 <div id="signin"
-                    class="isolate w-full bg-white rounded-lg shadow-lg dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700">
-                    <div class="p-6 space-y-4 md:space-y-6 sm:p-8">
+                    class="w-full relative rounded-xl shadow md:mt-0 sm:max-w-md xl:p-0 ">
+                    <div class="absolute -inset-1 rounded-lg bg-gradient-to-r from-[#B983FF] via-[#94DAFF] to-[#99FEFF] opacity-75 blur"></div>
+                    <div class="relative bg-white rounded-xl p-6 space-y-4 md:space-y-6 sm:p-8">
                         <h1
-                            class="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">
+                            class="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl ">
                             Sign in to your account
                         </h1>
                         <form action="/user/login" method="post"
-                            id="loginForm" class="space-y-4 md:space-y-6">
+                            id="loginForm" class="relative space-y-4 md:space-y-6">
                             <div>
                                 <label for="username"
-                                    class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Username</label>
+                                    class="block mb-2 text-sm font-medium text-gray-900 ">Username</label>
                                 <input type="text" name="username"
                                     id="username"
-                                    class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                    class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-[#8e70b7] focus:border-[#8e70b7] block w-full p-2.5 "
                                     placeholder="username" required
                                     value="<%=(locals.old_data) ? old_data.username : '' %>">
                             </div>
                             <div>
                                 <label for="password"
-                                    class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Password</label>
+                                    class="block mb-2 text-sm font-medium text-gray-900 ">Password</label>
                                 <input type="password" name="password"
                                     id="password" placeholder="••••••••"
-                                    class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                    class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-[#8e70b7] focus:border-[#8e70b7] block w-full p-2.5 "
                                     required
                                     value="<%=(locals.old_data) ? old_data.password : '' %>">
                             </div>
                             <% if(errors != null && errors.length > 0) { %>
-                                <% for (let i = 0; i < errors.length; i++) { %>
+                            <% for (let i = 0; i < errors.length; i++) { %>
                             <div
                                 class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative"
                                 role="alert">
@@ -74,91 +74,92 @@
                                         <input id="remember"
                                             aria-describedby="remember"
                                             type="checkbox"
-                                            class="w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-primary-300 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-primary-600 dark:ring-offset-gray-800">
+                                            class="w-4 h-4 accent-[#8e70b7] border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-blue-300">
                                     </div>
                                     <div class="ml-3 text-sm">
                                         <label for="remember"
-                                            class="text-gray-500 dark:text-gray-300">Remember
+                                            class="text-gray-500 ">Remember
                                             me</label>
                                     </div>
                                 </div>
                             </div>
                             <button type="submit"
-                                class="w-full text-white bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-3.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Sign
+                                class="w-full text-white bg-[#8e70b7] hover:bg-[#7d5da4] focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-3.5 text-center ">Sign
                                 in</button>
                             <p
-                                class="text-sm font-light text-gray-500 dark:text-gray-400">
+                                class="text-sm font-light text-gray-500 ">
                                 Don’t have an account yet? <a href="#"
                                     id="signup-link"
-                                    class="font-medium text-blue-600 hover:underline dark:text-blue-500">Sign
+                                    class="font-medium text-[#8e70b7] hover:underline ">Sign
                                     up</a>
                             </p>
-                            
+
                         </form>
                     </div>
                 </div>
-                
+
                 <!-- Sign up -->
                 <div id="signup"
-                    class="hidden w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700">
-                    <div class="p-6 space-y-4 md:space-y-6 sm:p-8">
+                    class="hidden w-full relative rounded-xl shadow md:mt-0 sm:max-w-md xl:p-0 ">
+                    <div class="absolute -inset-1 rounded-lg bg-gradient-to-r from-[#B983FF] via-[#94DAFF] to-[#99FEFF] opacity-75 blur"></div>
+                    <div class="relative bg-white rounded-xl p-6 space-y-4 md:space-y-6 sm:p-8">
                         <h1
-                            class="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">
+                            class="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl ">
                             Create and account
                         </h1>
                         <form action="/user/register" method="post" novalidate
                             id="registerForm" class="space-y-4 md:space-y-6">
                             <div>
                                 <label for="username"
-                                    class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Your
+                                    class="block mb-2 text-sm font-medium text-gray-900 ">Your
                                     username</label>
                                 <input type="text" name="username" id="username"
                                     value="<%=(locals.old_data) ? old_data.username : '' %>"
-                                    class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                    class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-[#8e70b7] focus:border-[#8e70b7] block w-full p-2.5 "
                                     placeholder="username" required>
                             </div>
                             <div>
                                 <label for="password"
-                                    class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Password</label>
+                                    class="block mb-2 text-sm font-medium text-gray-900 ">Password</label>
                                 <input type="password" name="password"
                                     id="password" placeholder="••••••••"
                                     value="<%=(locals.old_data) ? old_data.password : '' %>"
-                                    class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                    class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-[#8e70b7] focus:border-[#8e70b7] block w-full p-2.5 "
                                     required>
                             </div>
                             <div>
                                 <label for="confirm-password"
-                                    class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Confirm
+                                    class="block mb-2 text-sm font-medium text-gray-900 ">Confirm
                                     password</label>
                                 <input type="password" name="confirm-password"
                                     id="confirm-password" placeholder="••••••••"
-                                    class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                    class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-[#8e70b7] focus:border-[#8e70b7] block w-full p-2.5 "
                                     required>
                             </div>
                             <div class="flex items-start">
                                 <div class="flex items-center h-5">
                                     <input id="terms" aria-describedby="terms"
                                         type="checkbox"
-                                        class="w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-blue-300 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-blue-600 dark:ring-offset-gray-800"
+                                        class="w-4 h-4 accent-indigo-700 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-blue-300 "
                                         required>
                                 </div>
                                 <div class="ml-3 text-sm">
                                     <label for="terms"
-                                        class="font-light text-gray-500 dark:text-gray-300">I
+                                        class="font-light text-gray-500">I
                                         accept the <a
-                                            class="font-medium text-blue-600 hover:underline dark:text-blue-500"
+                                            class="font-medium text-[#8e70b7] hover:underline"
                                             href="#">Terms and
                                             Conditions</a></label>
                                 </div>
                             </div>
                             <button type="submit"
-                                class="w-full text-white bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-3.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Create
+                                class="w-full text-white bg-[#8e70b7] hover:bg-[#7d5da4] focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-3.5 text-center">Create
                                 an account</button>
                             <p
-                                class="text-sm font-light text-gray-500 dark:text-gray-400">
+                                class="text-sm font-light text-gray-500 ">
                                 Already have an account? <a href="#"
                                     id="signin-link"
-                                    class="font-medium text-blue-600 hover:underline dark:text-blue-500">Login
+                                    class="font-medium text-[#8e70b7] hover:underline ">Login
                                     here</a>
                             </p>
                         </form>
@@ -166,28 +167,7 @@
                 </div>
             </div>
         </section>
-        <div class="gradient-bg relative z-50">
-            <svg xmlns="http://www.w3.org/2000/svg">
-                <defs>
-                    <filter id="goo">
-                        <fegaussianblur in="SourceGraphic" stdDeviation="10"
-                            result="blur" />
-                        <fecolormatrix in="blur" mode="matrix"
-                            values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 18 -8"
-                            result="goo" />
-                        <feblend in="SourceGraphic" in2="goo" />
-                    </filter>
-                </defs>
-            </svg>
-            <div class="gradients-container">
-                <div class="g1"></div>
-                <div class="g2"></div>
-                <div class="g3"></div>
-                <div class="g4"></div>
-                <div class="g5"></div>
-                <div class="interactive"></div>
-            </div>
-        </div>
+
         <script>
         document.addEventListener('DOMContentLoaded', function () {
             var interBubble = document.querySelector('.interactive');

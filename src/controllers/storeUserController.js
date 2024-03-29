@@ -7,11 +7,11 @@ module.exports = (req,res)=>{
             req.flash('validationErrors', validationErrors);
             req.flash('data', req.body);
             return res.redirect('/login');
-        } else {
+        } else{
             // Continue with user creation logic
             User.create(req.body).then(() => {
                 console.log("User registered successfully");
-                res.redirect('/');
+                return res.redirect('/');
             }).catch((error) => {
                 if(error){
                     const validationErrors = Object.keys(error.errors).map(key => error.errors[key].message);
@@ -23,7 +23,7 @@ module.exports = (req,res)=>{
             });
         }
     }).catch((error) => {
-        console.log("Error checking user existence:", error);
+        console.log('Error checking user existence:',error);
         // Handle error case here
     });
 }
