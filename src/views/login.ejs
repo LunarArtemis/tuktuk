@@ -19,7 +19,7 @@
         
         <section>
             <div class="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
-                
+                <!--โลโก้ TukTuk-->
                 <a href="#"
                     class="flex items-center mb-6 text-2xl font-semibold text-gray-900">
                     <img class="w-8 h-8 mr-2"
@@ -29,15 +29,15 @@
                 </a>
 
                 <!-- Sign In -->
-                
-                <div id="signin"
-                    class="w-full relative rounded-xl shadow md:mt-0 sm:max-w-md xl:p-0 ">
+                <div id="signin" class="w-full relative rounded-xl shadow md:mt-0 sm:max-w-md xl:p-0 ">
+                    <!--กล่องส่วนพื้นหลังฟอร์ม-->
                     <div class="absolute -inset-1 rounded-lg bg-gradient-to-r from-[#B983FF] via-[#94DAFF] to-[#99FEFF] opacity-75 blur"></div>
                     <div class="relative bg-white rounded-xl p-6 space-y-4 md:space-y-6 sm:p-8">
                         <h1
                             class="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl ">
                             Sign in to your account
                         </h1>
+                        <!--ฟอร์มlogin-->
                         <form action="/user/login" method="post"
                             id="loginForm" class="relative space-y-4 md:space-y-6">
                             <div>
@@ -66,7 +66,6 @@
                                 <%= errors[i] %>
                             </div>
                             <% } } %>
-
                             <!-- Remember Me -->
                             <div class="flex items-center justify-between">
                                 <div class="flex items-start">
@@ -93,7 +92,6 @@
                                     class="font-medium text-[#8e70b7] hover:underline ">Sign
                                     up</a>
                             </p>
-
                         </form>
                     </div>
                 </div>
