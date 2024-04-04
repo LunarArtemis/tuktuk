@@ -4,16 +4,20 @@ const home = (req,res) => {
     res.render(path.join(`${__dirname}/../views/home.ejs`))
 }
 const upload = (req,res) =>{
-    res.render(path.join(`${__dirname}/../views/upload.ejs`))
-}
-const signin = (req,res) =>{
-    res.render(path.join(`${__dirname}/../views/login-register.ejs`))
+    let success =""
+    let data = req.flash('data')[0]
+    res.render(path.join(`${__dirname}/../views/upload.ejs`),{
+        message: req.flash('validationErrors'),
+        success: success,
+        data:data
+    })
+    
 }
 const edit = (req,res) =>{
     res.render(path.join(`${__dirname}/../views/edit.ejs`))
 }
 
-const register = (req,res)=>{
+const login = (req,res)=>{
     let username =""
     let password=""
     let data = req.flash('data')[0]
@@ -22,8 +26,8 @@ const register = (req,res)=>{
         username = data.username
         password = data.password
     }
-    res.render(path.join(`${__dirname}/../views/register.ejs`),{
-        errors:req.flash('validationErrors'),
+    res.render(path.join(`${__dirname}/../views/login.ejs`),{
+        errors: req.flash('validationErrors'),
         username:username,
         password:password
     })
@@ -33,7 +37,7 @@ const register = (req,res)=>{
 module.exports = {
     getHome: home,
     getUpload: upload,
-    getRegister: register,
+    getLogin: login,
     getEdit: edit
 }
 

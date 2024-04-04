@@ -1,6 +1,7 @@
 const expressHandler = require('express-async-handler');
 const Image = require('../models/images.model');
 const fs = require('fs');
+const express = require('express');
 
 const uploadFiles = expressHandler(async(req,res)=>{
     try{
@@ -15,6 +16,7 @@ const uploadFiles = expressHandler(async(req,res)=>{
             const validationErrors = "Image title already exists";
             filePath = req.file.path;
             req.flash('validationErrors', validationErrors);
+            req.flash('success', false);
             req.flash('data', req.body);
             fs.unlink(filePath, (err) => {
             if (err) {
@@ -25,6 +27,10 @@ const uploadFiles = expressHandler(async(req,res)=>{
         });
             return res.redirect('/upload');
         } else {
+            const validationErrors = "Image uploaded successfully";
+            req.flash('validationErrors', validationErrors);
+            req.flash('success', true);
+            req.flash('data', req.body);
             const image = Image({
                 title: req.body.inputName,
                 type: req.file.mimetype,
