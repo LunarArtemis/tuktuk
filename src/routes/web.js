@@ -8,6 +8,7 @@ const loginUserController = require('../controllers/loginUserController');
 const logoutController = require('../controllers/logoutController');
 const redirectifAuth = require('../middleware/redirectifAuth');
 const Image = require('../models/images.model.js');
+const editController = require('../controllers/editController');
 
 let routes = (app) => {
     app.set('view engine', 'ejs');
@@ -17,6 +18,7 @@ let routes = (app) => {
     router.get('/login',redirectifAuth, webController.getLogin);
     router.get('/logout', logoutController);
     router.get('/edit', webController.getEdit);
+    router.get('/editSea', editController);
     router.get('/search/:key', async (req, res) => {
         let data = await Image.find(
             { 

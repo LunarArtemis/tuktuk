@@ -29,8 +29,8 @@ global.__basedir = __dirname;
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true}))
-app.use(express.static(path.join(__dirname, 'public')))
-app.use(express.static(path.join(__dirname, 'resources')))
+app.use(express.static(path.join(__dirname, 'public')));
+app.use('/resources/static/assets/uploads',express.static('resources/static/assets/uploads'));
 app.use(flash())
 app.use(expressSession({
     secret:"node secret"
@@ -41,7 +41,6 @@ app.use('*',(req,res,next)=>{
     role = req.session.role;
     next();
 })
-
 app.set('views' , path.join(__dirname, 'src/views'));
 app.set('view engine', 'ejs');
 initRoutes(app);

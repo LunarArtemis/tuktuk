@@ -1,18 +1,29 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <title>Edit Photo</title>
     <style>
         /* Add your custom CSS styles here */
     </style>
 </head>
+
 <body>
     <h1>Edit Photo</h1>
-    
-    <!-- Add your photo editing form or UI elements here -->
-    
-    <script>
-        // Add your JavaScript code for photo editing functionality here
-    </script>
+    <div>
+    <% if(images != null && images.length > 0) {%>
+    <% images.forEach(function(image) { %>
+        <img src="<%= image.filepath %>" alt="Image uploaded by user">
+        <% }); %>
+        <% } else{ %>
+            <h2>You not upload image</h2>
+        <% } %>
+    </div>
+
+
+            <script>
+                // Add your JavaScript code for photo editing functionality here
+            </script>
 </body>
+
 </html>
