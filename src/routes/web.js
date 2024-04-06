@@ -19,6 +19,19 @@ let routes = (app) => {
     router.get('/login',redirectifAuth, webController.getLogin);
     router.get('/logout', logoutController);
     router.get('/edit', webController.getEdit);
+    router.get('/edit/:key', async (req, res) => {
+        let data = await Image.find(
+            { 
+                    // uploaded_by: req.session.userId, //not test yet.
+                "$or": [
+                    { "title": { "$regex": req.params.key, "$options": "i" } },
+                    { "tags": { "$regex": req.params.key, "$options": "i" } }
+                ]
+            }
+        );
+        //show image
+        res.render('edit', { data: data });
+    });
     router.get('/editSea', editController);
     router.get('/search/:key', async (req, res) => {
         let data = await Image.find(

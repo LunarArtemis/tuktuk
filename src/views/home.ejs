@@ -96,12 +96,9 @@
 
     <script>
         document.getElementById('searchForm').addEventListener('submit', function (event) {
-            event.preventDefault(); // Prevent default form submission
-
-            // Get the value from the input field
+            event.preventDefault();
             const key = document.getElementById('searchInput').value.trim();
 
-            // Redirect to the search endpoint with the key as a parameter
             if (key.length === 0) {
                 Swal.fire("Please enter Tag/Keyword for Images");
                 return;
