@@ -10,6 +10,7 @@ const redirectifAuth = require('../middleware/redirectifAuth');
 const Image = require('../models/images.model.js');
 const editController = require('../controllers/editController');
 
+
 let routes = (app) => {
     app.set('view engine', 'ejs');
     //get
@@ -24,7 +25,6 @@ let routes = (app) => {
             { 
                 "$or": [
                     { "title": { "$regex": req.params.key, "$options": "i" } },
-                    { "description": { "$regex": req.params.key, "$options": "i" } },
                     { "tags": { "$regex": req.params.key, "$options": "i" } }
                 ]
             }
@@ -38,6 +38,7 @@ let routes = (app) => {
     router.post('/user/upload',upload.single("fileInput"), uploadController.uploadFiles);
     router.post('/user/register',redirectifAuth,storeController)
     router.post('/user/login',redirectifAuth,loginUserController)
+
     return app.use("/",router);
 }
 

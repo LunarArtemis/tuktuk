@@ -10,7 +10,6 @@
         <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.css" rel="stylesheet" />
         <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
         <script>
         tailwind.config = {
@@ -141,6 +140,19 @@
 
 
                 </div>
+        </div>
+
+        <!-- card search box -->
+        <div class="rounded-md flex flex-row justify-center items-center h-96">
+            <div class="flex flex-col items-center">
+                <form id="searchForm" class="flex items-center">
+                    <input id="searchInput" type="text"
+                        class="w-96 h-12 px-4 text-lg text-gray-800 border-2 border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#8e70b7] focus:border-transparent"
+                        placeholder="Find your images" />
+                    <button type="submit"
+                        class="text-white bg-[#8e70b7] hover:bg-[#7d5da4] focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-lg px-4 py-2 ml-2"><img src="resources\static\assets\uploads\searchIcon.png"></button>
+                </form>
+            </div>
         </div>
 
         <script>
