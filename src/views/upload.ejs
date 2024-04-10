@@ -1,93 +1,171 @@
-<!-- FILEPATH: /c:/Users/seaza/Documents/GitHub/tuktuk/src/views/upload.ejs -->
-
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
 
-<head>
-  <style>
-    .preview-images img{
-        width: 100%;
-    }
-  </style>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Upload Form</title>
-  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-  <script src="https://cdn.tailwindcss.com"></script>
-</head>
-<!--พื้นหลังส่วนที่เป็นฟอร์ม-->
+  <head>
+    <style>
+      .preview-images img{
+          width: 100%;
+      }
+    </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+
+
 <body class="bg-gray-50">
-  <!--Logo TukTuk-->
-  <a href="#"
-  class="flex items-center mb-6 text-2xl font-semibold text-gray-900">
-    <img class="w-8 h-8 mr-2"src="static/assets/uploads/tuktuk.png" alt="logo">TukTuk
-</a>
-  <div class="absolute -inset-1 rounded-lg bg-gradient-to-r from-[#B983FF] via-[#94DAFF] to-[#99FEFF] opacity-75 blur"></div>
-  <div class="relative bg-white rounded-xl p-6 space-y-4 md:space-y-6 sm:p-8">
-    
-    <!--ข้อความหัวฟอร์ม-->
-    <div class="container mx-auto p-4">
-      <h1 class="text-2xl font-bold mb-4">Upload Your Picture</h1>
-  
-      <!--ใส่ไฟล์รูป-->
-      <form action="/user/upload" method="post" id="uploadForm" enctype="multipart/form-data">
-        <div class="mb-4">
-          <label for="fileInput" class="block font-medium">Select File:</label>
-          <input type="file" id="fileInput" name="fileInput" class="border border-gray-300 p-2 rounded">
-        </div>
-  
-        <!--ใส่ชื่อรูป-->
-        <div class="mb-4">
-          <label for="inputName" class="block font-medium">Name:</label>
-          <input type="text" id="inputName" name="inputName" class="border border-gray-300 p-2 rounded">
-        </div>
-  
-        <!--กรอกdesctiption-->
-        <div class="mb-4">
-          <label for="inputDescription" class="block font-medium">Description:</label>
-          <input type="text" id="inputDescription" name="inputDescription" class="border border-gray-300 p-2 rounded">
-        </div>
-  
-        <!--กรอก tagไว้ใช้ค้นนหารูป-->
-        <h1 class="text-2xl font-bold mb-4">Input Tag</h1>
-        <div class="mb-4">
-          <label for="inputTag" class="block font-medium">Input:</label>
-          <input type="text" id="inputTag" name="inputTag" class="border border-gray-300 p-2 rounded">
-        </div>
-        <!--ปุ่มอัพโหลด-->
-        <button type="submit" width: 200px; height: 50px; class="w-full text-white bg-[#8e70b7] hover:bg-[#7d5da4] focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-3.5 text-center">
-          Upload
-        </button>
-      </form>
-    </div>
-    <hr>
-      <div class="container mx-auto p-4">
-          <h1 class="text-2xl font-bold mb-4">Image Preview</h1>
-          <div class="flex flex-wrap">
-              <div class="preview-images"></div>
+      <section>
+
+          <a href="#"
+                    class="flex items-center mb-6 text-2xl font-semibold text-gray-900">
+                    <img class="w-8 h-8 mr-2"
+                        src="static/assets/uploads/tuktuk.png"
+                        alt="logo">
+                    TukTuk
+          </a>
+            
+
+            <div class="container mx-auto p-4">
+              <h1 class="text-2xl font-bold mb-4">Upload Your Picture</h1>
+
+              <form action="/user/upload" method="post" id="uploadForm" enctype="multipart/form-data">
+                <div class="mb-4">
+                  <label for="fileInput" class="block font-medium">Select File:</label>
+                  <input type="file" id="fileInput" name="fileInput" class="border border-gray-300 p-2 rounded">
+                </div>
+
+                <div class="mb-4">
+                  <label for="inputName" class="block font-medium">Name:</label>
+                  <input type="text" id="inputName" name="inputName" class="border border-gray-300 p-2 rounded">
+                </div>
+
+                <div class="mb-4">
+                  <label for="inputDescription" class="block font-medium">Description:</label>
+                  <input type="text" id="inputDescription" name="inputDescription" class="border border-gray-300 p-2 rounded">
+                </div>
+
+                <h1 class="text-2xl font-bold mb-4">Input Tag</h1>
+                <div class="mb-4">
+                  <label for="inputTag" class="block font-medium">Input:</label>
+                  <input type="text" id="inputTag" name="inputTag" class="border border-gray-300 p-2 rounded">
+                </div>
+                <button type="submit" width: 200px; height: 50px; class="w-full text-white bg-[#8e70b7] hover:bg-[#7d5da4] focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-3.5 text-center">
+                  Upload
+                </button>
+              </form>
+            </div>
+            <hr>
+              <div class="container mx-auto p-4">
+                  <h1 class="text-2xl font-bold mb-4">Image Preview</h1>
+                  <div class="flex flex-wrap">
+                      <div class="preview-images"></div>
+                  </div>
+            </div>
           </div>
-    </div>
-  </div>
-  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-  <script>
-    $(document).ready(function() {
-        let imagePreview = function(input, placeToInsertImagePreview){
-            if(input.files){
-                let filesAmount = input.files.length;
-                for(let i = 0; i < filesAmount; i++){
-                    let reader = new FileReader();
-                    reader.onload = function(event){
-                        $($.parseHTML('<img>')).attr('src', event.target.result).appendTo(placeToInsertImagePreview);
+          <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+          <script>
+            $(document).ready(function() {
+                let imagePreview = function(input, placeToInsertImagePreview){
+                    if(input.files){
+                        let filesAmount = input.files.length;
+                        for(let i = 0; i < filesAmount; i++){
+                            let reader = new FileReader();
+                            reader.onload = function(event){
+                                $($.parseHTML('<img>')).attr('src', event.target.result).appendTo(placeToInsertImagePreview);
+                            }
+                            reader.readAsDataURL(input.files[i]);
+                        }
                     }
-                    reader.readAsDataURL(input.files[i]);
                 }
-            }
-        }
-      $('#fileInput').on('change',function(){
-        imagePreview(this,"div.preview-images")
-      })
-    });
-  </script>
+              $('#fileInput').on('change',function(){
+                imagePreview(this,"div.preview-images")
+              })
+            });
+          </script>
+      </section>
 </body>
 
+</html> -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Login and Registration</title>
+        <!-- Include Tailwind CSS -->
+        <script src="https://cdn.tailwindcss.com"></script>
+        <link
+            href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.css"
+            rel="stylesheet" />
+        <script
+            src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>
+</head>
+<body>
+  <section class="bg-gray-50 dark:bg-gray-900">
+    
+    <div class="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
+        
+        <a href="#"
+            class="flex items-center mb-6 text-2xl font-semibold text-gray-900">
+            <img class="w-8 h-8 mr-2"
+                src="static/assets/uploads/tuktuk.png"
+                alt="logo">
+            TukTuk
+        </a>
+        <div class="w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700">
+            <div class="p-6 space-y-4 md:space-y-6 sm:p-8">
+                <h1 class="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">
+                  Upload Your Picture
+                </h1>
+                <form action="/user/upload" method="post" id="uploadForm" enctype="multipart/form-data">
+                  <div class="mb-4">
+                    <label for="fileInput" class="block font-medium">Select File:</label>
+                    <input type="file" id="fileInput" name="fileInput" class="border border-gray-300 p-2 rounded">
+                  </div>
+                    
+                  <div class="mb-4">
+                    <label for="inputName" class="block font-medium">Name:</label>
+                    <input type="text" id="inputName" name="inputName" class="border border-gray-300 p-2 rounded">
+                  </div>
+
+
+                  <div class="mb-4">
+                    <label for="inputDescription" class="block font-medium">Description:</label>
+                    <input type="text" id="inputDescription" name="inputDescription" class="border border-gray-300 p-2 rounded">
+                  </div>
+                  <div class="mb-4">
+                    <label for="inputTag" class="block font-medium">Input Tag:</label>
+                    <input type="text" id="inputTag" name="inputTag" class="border border-gray-300 p-2 rounded">
+                  </div>
+                  <button type="submit" width: 200px; height: 50px; class="w-full text-white bg-[#8e70b7] hover:bg-[#7d5da4] focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-3.5 text-center">
+                    Upload
+                  </button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+          <script>
+            $(document).ready(function() {
+                let imagePreview = function(input, placeToInsertImagePreview){
+                    if(input.files){
+                        let filesAmount = input.files.length;
+                        for(let i = 0; i < filesAmount; i++){
+                            let reader = new FileReader();
+                            reader.onload = function(event){
+                                $($.parseHTML('<img>')).attr('src', event.target.result).appendTo(placeToInsertImagePreview);
+                            }
+                            reader.readAsDataURL(input.files[i]);
+                        }
+                    }
+                }
+              $('#fileInput').on('change',function(){
+                imagePreview(this,"div.preview-images")
+              })
+            });
+          </script>
+  </section>
+</body>
 </html>
