@@ -14,7 +14,13 @@ const editController = require('../controllers/editController');
 let routes = (app) => {
     app.set('view engine', 'ejs');
     //get
-    router.get('/', webController.getHome)
+    // router.get('/', webController.getHome);
+    router.get('/', async (req, res) => {
+        let data = await Image.find({}).limit(9).sort({$natural:-1});
+        //show image
+        res.render('home', { data: data });
+    });
+
     router.get('/upload',webController.getUpload);
     router.get('/login',redirectifAuth, webController.getLogin);
     router.get('/logout', logoutController);
