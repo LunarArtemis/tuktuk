@@ -49,6 +49,17 @@
                         <span
                             class="text-[#37294c] self-center text-xl font-bold whitespace-nowrap">TukTuk</span>
                     </a>
+                     
+                    <!-- upload button -->
+                    <a href="/upload"
+                        class="text-white bg-[#8e70b7] hover:bg-[#7d5da4] focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5 mr-2">Upload</a>
+                        
+
+                    <form id="searchForm" class="flex items-center">
+                        <input id="searchInput" type="text"
+                            class="w-96 h-10 px-4 text-sm text-gray-800 border-2 border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#8e70b7] focus:border-transparent"
+                            placeholder="Search for an images" />
+                    </form>
                     <div class="flex items-center lg:order-2">
 
                         <% if(loggedIn) { %>
@@ -81,43 +92,14 @@
                             </svg>
                         </button>
                     </div>
-                    <div
-                        class="hidden justify-between items-center w-full lg:flex lg:w-auto lg:order-1"
-                        id="mobile-menu-2">
-                        <ul
-                            class="flex flex-col mt-4 font-medium lg:flex-row lg:space-x-8 lg:mt-0">
-                            <li>
-                                <a href="/upload"
-                                    class="block py-2 pr-4 pl-3 text-gray-900 rounded bg-primary-700 lg:bg-transparent lg:text-primary-700 lg:p-0 "
-                                    aria-current="page">
-                                    Upload
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
                 </div>
             </nav>
         </header>
 
-        <!-- card search box -->
-        <div class="rounded-md flex flex-row justify-center items-center h-96">
-            <div class="flex flex-col items-center">
-                <h1 class="text-4xl font-bold text-gray-800 mb-7">Welcome to
-                    TukTuk</h1>
-                <form id="searchForm" class="flex items-center">
-                    <input id="searchInput" type="text"
-                        class="w-96 h-12 px-4 text-lg text-gray-800 border-2 border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#8e70b7] focus:border-transparent"
-                        placeholder="Search for an images" />
-                    <button type="submit"
-                        class="text-white bg-[#8e70b7] hover:bg-[#7d5da4] focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-lg px-4 py-2 ml-2">Search</button>
-                </form>
-            </div>
-        </div>
-
-        <section>
-            <div class="flex flex-col items-center px-24 mb-20">
-                <h1 class="text-4xl font-bold text-gray-800 mb-7">Trending
-                    Images</h1>
+        <section class="mt-4">
+            <div class="flex flex-col items-center h-96 px-24 mb-20">
+                <!-- <h1 class="text-4xl font-bold text-gray-800 mb-7">Trending
+                    Images</h1> -->
                 <div class="grid grid-cols-3 gap-4" id="card-grid">
                     <% data.forEach(function(image) { %>
                     <div id="warp">
@@ -146,7 +128,7 @@
                 window.location.href = `/search/${encodeURIComponent(key)}`;
             }
         });
-    </script>
+        </script>
 
     </body>
 
