@@ -121,7 +121,7 @@
                 <div class="grid grid-cols-3 gap-4" id="card-grid">
                     <% data.forEach(function(image) { %>
                     <div id="warp">
-                        <a href="/search/<%= image.id %>">
+                        <a href="/search/<%= image.tags %>">
                         <img
                             src="<%= image.filepath.replace('/resources', '') %>"
                             alt="<%= image.description %>"
