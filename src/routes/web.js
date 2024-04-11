@@ -24,7 +24,7 @@ let routes = (app) => {
     router.get('/upload',webController.getUpload);
     router.get('/login',redirectifAuth, webController.getLogin);
     router.get('/logout', logoutController);
-    router.get('/edit', webController.getEdit);
+    router.get('/edit', editController);
     router.get('/edit/:key', async (req, res) => {
         let data = await Image.find(
             { 
