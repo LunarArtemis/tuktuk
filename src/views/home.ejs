@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>HomePage</title>
+        <title>TukTuk</title>
         <!-- Include Tailwind CSS -->
         <script src="https://cdn.tailwindcss.com"></script>
         <link
@@ -15,6 +15,8 @@
         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
         <link src="css/globals.css" rel="stylesheet" type="text/css"/>
+
+        <link rel="icon" type="image/x-icon" href="\static\assets\uploads\tuktuk.png">
         <script>
         tailwind.config = {
             theme: {
@@ -44,7 +46,7 @@
                 <div
                     class="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl">
                     <a href="/" class="flex items-center">
-                        <img src="static/assets/uploads/tuktuk.png"
+                        <img src="/static/assets/uploads/tuktuk.png"
                             class="mr-3 h-6 sm:h-9" />
                         <span
                             class="text-[#37294c] self-center text-xl font-bold whitespace-nowrap">TukTuk</span>
@@ -96,14 +98,13 @@
             </nav>
         </header>
 
+
         <section class="mt-4">
-            <div class="flex flex-col items-center h-96 px-24 mb-20">
-                <!-- <h1 class="text-4xl font-bold text-gray-800 mb-7">Trending
-                    Images</h1> -->
+            <div class="flex flex-col items-center px-24 mb-20">
                 <div class="grid grid-cols-3 gap-4" id="card-grid">
                     <% data.forEach(function(image) { %>
                     <div id="warp">
-                        <a href="/search/<%= image.tags %>">
+                        <a href="/pin/<%= image.id %>">
                         <img
                             src="<%= image.filepath.replace('/resources', '') %>"
                             alt="<%= image.description %>"
@@ -114,22 +115,27 @@
                     <% }); %>
                 </div>
             </div>
-        </section>
+        </section>>
+
 
         <script>
-        document.getElementById('searchForm').addEventListener('submit', function (event) {
-            event.preventDefault();
-            const key = document.getElementById('searchInput').value.trim();
+            document.getElementById('searchForm').addEventListener('submit', function (event) {
+                event.preventDefault();
+                const key = document.getElementById('searchInput').value.trim();
 
-            if (key.length === 0) {
-                Swal.fire("Please enter Tag/Keyword for Images");
-                return;
-            }else{
-                window.location.href = `/search/${encodeURIComponent(key)}`;
-            }
-        });
+                if (key.length === 0) {
+                    Swal.fire("Please enter Tag/Keyword for Images");
+                    return;
+                }else{
+                    window.location.href = `/search/${encodeURIComponent(key)}`;}
+            });
+
+            document.querySelectorAll('img').forEach(function(img) {
+                img.addEventListener('click', function() {
+                window.location.href = `/pin/${encodeURIComponent(id)}`;}
+                );
+            });
         </script>
 
     </body>
-
 </html>

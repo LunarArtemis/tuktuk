@@ -35,7 +35,6 @@ let routes = (app) => {
                 ]
             }
         );
-        //show image
         res.render('edit', { data: data });
     });
     router.get('/editSea', editController);
@@ -48,10 +47,12 @@ let routes = (app) => {
                 ]
             }
         );
-        //show image
         res.render('search', { data: data });
     });
-
+    router.get('/pin/:id', async(req, res) => {
+        let data = await Image.findById(req.params.id);
+        res.render('pin', { data: data });
+    });
     
     //post
     router.post('/user/upload',upload.single("fileInput"), uploadController.uploadFiles);
