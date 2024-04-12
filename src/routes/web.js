@@ -9,6 +9,8 @@ const logoutController = require('../controllers/logoutController');
 const redirectifAuth = require('../middleware/redirectifAuth');
 const Image = require('../models/images.model.js');
 const editController = require('../controllers/editController');
+const countDownload = require('../controllers/countDownload');
+const countLike = require('../controllers/countLike');
 
 
 let routes = (app) => {
@@ -20,24 +22,12 @@ let routes = (app) => {
         //show image
         res.render('home', { data: data });
     });
-
     router.get('/upload',webController.getUpload);
     router.get('/login',redirectifAuth, webController.getLogin);
     router.get('/logout', logoutController);
     router.get('/edit', editController);
-    router.get('/edit/:key', async (req, res) => {
-        let data = await Image.find(
-            { 
-                    // uploaded_by: req.session.userId, //not test yet.
-                "$or": [
-                    { "title": { "$regex": req.params.key, "$options": "i" } },
-                    { "tags": { "$regex": req.params.key, "$options": "i" } }
-                ]
-            }
-        );
-        res.render('edit', { data: data });
-    });
     router.get('/editSea', editController);
+    router.get('/download/:id', countDownload);
     router.get('/search/:key', async (req, res) => {
         let data = await Image.find(
             { 
@@ -53,11 +43,12 @@ let routes = (app) => {
         let data = await Image.findById(req.params.id);
         res.render('pin', { data: data });
     });
-    
+
     //post
     router.post('/user/upload',upload.single("fileInput"), uploadController.uploadFiles);
     router.post('/user/register',redirectifAuth,storeController)
     router.post('/user/login',redirectifAuth,loginUserController)
+    router.post('/like/:id', countLike);
 
     return app.use("/",router);
 }

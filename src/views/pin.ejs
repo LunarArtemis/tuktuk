@@ -107,8 +107,10 @@
                 </div>
                 <div class="flex justify-center mt-5">
                     <button class="mx-2 py-2 px-4 bg-blue-500 text-white rounded">Share</button>
-                    <button class="mx-2 py-2 px-4 bg-green-500 text-white rounded">Like</button>
-                    <a href="<%= data.filepath.replace('/resources', '') %>" download class="mx-2 py-2 px-4 bg-red-500 text-white rounded">Download</a>
+                    <button id="like-button" class="mx-2 py-2 px-4 bg-green-500 text-white rounded">Like</button>
+                    <p id="like-count">Likes: <%= data.likeCount %></p>                
+                    <a href="/download/<%= data._id %>" class="mx-2 py-2 px-4 bg-red-500 text-white rounded">Download</a>
+                    <p class="font-bold">Downloads: <%= data.downloadCount %></p>
                 </div>
             </div>
         </div>
@@ -124,6 +126,18 @@
                 }else{
                     window.location.href = `/search/${encodeURIComponent(key)}`;
                 }
+            });
+
+            document.getElementById('like-button').addEventListener('click', function() {
+                fetch('/like/<%= data._id %>', { method: 'POST' })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        document.getElementById('like-count').textContent = 'Likes: ' + data.likeCount;
+                        this.textContent = data.liked ? 'Unlike' : 'Like';
+                        this.style.backgroundColor = data.liked ? '#ff0000' : '#00ff00';
+                    }
+                });
             });
         </script>
 

@@ -1,6 +1,6 @@
 const mongoose = require('mongoose')
 const Schema = mongoose.Schema
-const dotenv = require('dotenv')
+const dotenv = require('dotenv');
 
 dotenv.config()
 
@@ -36,7 +36,20 @@ const ImageSchema = new Schema({
     tags: {
       type: [String],
       required: true
-    }
+    },
+    downloadCount: { 
+      type: Number, 
+      default: 0
+    },
+    countLike: {
+      type: Number,
+      default: 0
+    },
+    likes: {
+      type: [mongoose.Schema.Types.ObjectId],
+      default: []
+  }
+
   });
 
 const Image = mongoose.model('Image', ImageSchema)
