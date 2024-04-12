@@ -54,23 +54,23 @@
                      
                     <!-- upload button -->
                     <a href="/upload"
-                        class="text-white bg-[#8e70b7] hover:bg-[#7d5da4] focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5 mr-2">Upload</a>
+                        class="text-white bg-[#9d86c6] hover:bg-[#8e70b7] focus:ring-4 focus:ring-blue-300 font-medium rounded-2xl transition-colors text-sm px-4 lg:px-5 py-2 lg:py-2.5 mr-2">Upload</a>
                         
 
                     <form id="searchForm" class="flex items-center">
                         <input id="searchInput" type="text"
-                            class="w-96 h-10 px-4 text-sm text-gray-800 border-2 border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#8e70b7] focus:border-transparent"
+                            class="w-96 h-10 px-4 text-sm text-gray-800 border-2 border-gray-300 rounded-2xl focus:outline-none focus:ring-2 focus:ring-[#9d86c6] focus:border-transparent"
                             placeholder="Search for an images" />
                     </form>
                     <div class="flex items-center lg:order-2">
 
                         <% if(loggedIn) { %>
                         <a href="/logout"
-                            class="text-white bg-red-500 hover:bg-red-600 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5 mr-2">Log
+                            class="text-white bg-red-500 hover:bg-red-600 focus:ring-4 focus:ring-red-300 font-medium rounded-2xl transition-colors text-sm px-4 lg:px-5 py-2 lg:py-2.5 mr-2">Log
                             out</a>
                         <% } if(!loggedIn) { %>
                         <a href="/login"
-                            class="text-white bg-[#8e70b7] hover:bg-[#7d5da4] focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5 mr-2">Log
+                            class="text-white bg-[#9d86c6] hover:bg-[#8e70b7] focus:ring-4 focus:ring-blue-300 font-medium rounded-2xl transition-colors text-sm px-4 lg:px-5 py-2 lg:py-2.5 mr-2">Log
                             in</a>
                         <% } %>
                         <button data-collapse-toggle="mobile-menu-2"
