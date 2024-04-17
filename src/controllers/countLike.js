@@ -15,8 +15,9 @@ const countLike = async (req, res) => {
             like = false;
         }
 
+        image.likeCount = image.likes.length;
         await image.save();
-        res.json({ success: true, likeCount: image.likes.length, liked: like});
+        res.json({ success: true, likeCount: image.likeCount, liked: like});
     } else {
         res.status(404).json({ success: false });
     }
