@@ -41,7 +41,7 @@ let routes = (app) => {
     });
     router.get('/pin/:id', async(req, res) => {
         let data = await Image.findById(req.params.id);
-        res.render('pin', { data: data });
+        res.render('pin', { data: data , imageURL: data.url});
     });
 
     //post
