@@ -14,7 +14,10 @@ const upload = (req,res) =>{
     
 }
 const edit = (req,res) =>{
-    res.render(path.join(`${__dirname}/../views/edit.ejs`))
+    res.render(path.join(`${__dirname}/../views/edit.ejs`),{
+        messageUpdate: req.flash('validationErrorsUpdate'),
+        success: success
+    })
 }
 
 const login = (req,res)=>{
@@ -33,11 +36,15 @@ const login = (req,res)=>{
     })
 
 }
+const edit_images = (req,res)=>{
+     res.render(path.join(`${__dirname}/../views/edit_images.ejs`))
+}
 
 module.exports = {
     getHome: home,
     getUpload: upload,
     getLogin: login,
-    getEdit: edit
+    getEdit: edit,
+    getEditImages: edit_images
 }
 

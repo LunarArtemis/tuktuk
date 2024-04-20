@@ -11,6 +11,7 @@ const dotenv = require('dotenv');
 const User = require('./src/models/User');
 const dbMongo = require('./src/config/dbMongo');
 const { truncateSync } = require('fs');
+const bodyParser = require('body-parser');
 
 dotenv.config()
 
@@ -33,6 +34,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'resources'))); //dont touch it!!!
 app.use('/resources/static/assets/uploads',express.static('resources/static/assets/uploads'));
 app.use(flash())
+app.use(bodyParser.json());
 app.use(expressSession({
     secret:"node secret"
 }))

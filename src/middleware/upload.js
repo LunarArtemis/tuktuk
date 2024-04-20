@@ -1,4 +1,9 @@
 const multer = require('multer');
+(req,res) => {
+if(!req.session.userId){
+        return res.redirect('/')
+    }
+}
 const imageFilter = (req,file,cb)=>{
     if(file.mimetype.startsWith("image")){
         cb(null, true);

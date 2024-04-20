@@ -38,7 +38,7 @@ const uploadFiles = expressHandler(async(req,res)=>{
                 description: req.body.inputDescription,
                 filename: req.file.originalname,
                 filepath: "/resources/static/assets/uploads/" + req.file.filename,
-                tags: req.body.inputTag.split(',')
+                tags: req.body.inputTag.split(/[\s,]/)
             });
 
             await image.save();

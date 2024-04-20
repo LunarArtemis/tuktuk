@@ -13,7 +13,9 @@ const countDownload = require('../controllers/countDownload');
 const countLike = require('../controllers/countLike');
 const searchController = require('../controllers/searchController');
 const pinController = require('../controllers/pinController');
-
+const notLogin = require('../middleware/notLogin');
+const editController = require('../controllers/editController');
+const updateController = require('../controllers/updateController');
 
 let routes = (app) => {
     app.set('view engine', 'ejs');
@@ -24,19 +26,21 @@ let routes = (app) => {
         // let data = await Image.find({}).limit(9).sort({$natural:-1});
         res.render('home', { data: data });
     });
-    router.get('/upload',webController.getUpload);
+    router.get('/upload',notLogin,webController.getUpload);
     router.get('/login',redirectifAuth, webController.getLogin);
-    router.get('/logout', logoutController);
-    router.get('/edit', imageLoader);
+    router.get('/logout',notLogin,logoutController);
+    router.get('/edit', notLogin, imageLoader);
     router.get('/download/:id', countDownload);
     router.get('/search/:key', searchController);
     router.get('/pin/:id', pinController);
-
+    router.get('/edit/:id', notLogin,editController)
+    router.get('/edit_images',notLogin,webController.getEditImages);
     //post
     router.post('/user/upload',upload.single("fileInput"), uploadController.uploadFiles);
     router.post('/user/register',redirectifAuth,storeController)
     router.post('/user/login',redirectifAuth,loginUserController)
-    router.post('/like/:id', countLike);
+    router.post('/like/:id', notLogin, countLike);
+    router.post('/update/:id',upload.single("fileInput"),updateController)
 
     return app.use("/",router);
 }
