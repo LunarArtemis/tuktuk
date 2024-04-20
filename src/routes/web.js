@@ -18,7 +18,7 @@ let routes = (app) => {
     //get
     // router.get('/', webController.getHome);
     router.get('/', async (req, res) => {
-        let data = await Image.find({}).limit(9).sort({$natural:-1});
+        let data = await Image.aggregate([{ $sample: { size: 9 } }]);
         //show image
         res.render('home', { data: data });
     });
