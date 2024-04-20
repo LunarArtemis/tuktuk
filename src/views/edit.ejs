@@ -154,13 +154,20 @@
                 
                 <!-- card image -->
                 <div>
+                    <tr>
                     <% if(images !=null && images.length> 0) {%>
                         <% images.forEach(function(image) { %>
-                            <img src="<%= image.filepath %>" alt="Image uploaded by user">
-                            <% }); %>
-                                <% } else{ %>
-                                    <h2>You not upload image</h2>
-                                    <% } %>
+                                <td><img src="<%= image.filepath %>" alt="<%= image.title %>>"></td>
+                                <td><a href="/edit/<%=image._id%>"><i class="fas fa-edit fa-lg mx-1"></i></a>
+                                    <a href=""><i class="fas fa-trash fa-lg mx-1"></i></a>
+                                </td>
+                                <% }); %>
+                    </tr>
+                            
+                    <% } else{ %>
+                                <h2>You not upload image</h2>
+                                <% } %>
+                    <% console.log(images) %>
                 </div>
             </div>
         </div>
