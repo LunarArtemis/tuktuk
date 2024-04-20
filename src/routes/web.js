@@ -8,7 +8,7 @@ const loginUserController = require('../controllers/loginUserController');
 const logoutController = require('../controllers/logoutController');
 const redirectifAuth = require('../middleware/redirectifAuth');
 const Image = require('../models/images.model.js');
-const editController = require('../controllers/editController');
+const imageLoader = require('../controllers/imageLoader');
 const countDownload = require('../controllers/countDownload');
 const countLike = require('../controllers/countLike');
 const searchController = require('../controllers/searchController');
@@ -27,8 +27,7 @@ let routes = (app) => {
     router.get('/upload',webController.getUpload);
     router.get('/login',redirectifAuth, webController.getLogin);
     router.get('/logout', logoutController);
-    router.get('/edit', editController);
-    router.get('/editSea', editController);
+    router.get('/edit', imageLoader);
     router.get('/download/:id', countDownload);
     router.get('/search/:key', searchController);
     router.get('/pin/:id', pinController);
