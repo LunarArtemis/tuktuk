@@ -112,7 +112,7 @@
 
 
         <section class="mt-4">
-            <div class="flex flex-col items-center px-24 mt-20 mb-20">
+            <div class="flex flex-col items-center h-96 px-24 mt-20 mb-20">
                 <div class="grid grid-cols-3 gap-4" id="card-grid">
                     <% data.forEach(function(image) { %>
                     <div id="warp">
@@ -124,11 +124,11 @@
                             id="img">
                         </a>
                     </div>
+                    
                     <% }); %>
                 </div>
             </div>
         </section>
-
 
         <script>
             document.getElementById('searchForm').addEventListener('submit', function (event) {
@@ -144,8 +144,8 @@
 
             document.querySelectorAll('img').forEach(function(img) {
                 img.addEventListener('click', function() {
-                window.location.href = `/pin/${encodeURIComponent(id)}`;}
-                );
+                    window.location.href = `/pin/${encodeURIComponent(id)}`;
+                });
             });
         </script>
 
