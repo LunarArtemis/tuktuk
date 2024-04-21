@@ -133,7 +133,13 @@
                     <img src="<%= data.filepath.replace('/resources', '') %>" alt="<%= data.description %>" class="w-96 rounded shadow-lg mb-5">
                     <div class="text-lg pt-2 px-6 text-center">
                         <p><%= data.description %></p>
-                        <p class="font-bold text-base">Tags: <%= data.tags.join(', ') %></p>
+                        <p class="font-bold text-base">Tags: 
+                            <% for(let i=0; i < data.tags.length; i++){ %>
+                                <a href="/search/<%= data.tags[i] %>">
+                                    <%= data.tags[i] %>
+                                </a>
+                                <% } %>
+                        </p>
                     </div>
                 </div>
                 
