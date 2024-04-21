@@ -2,7 +2,6 @@ const Image = require('../models/images.model.js');
 const User = require('../models/User.js');
 
 const pin = async(req, res) => {
-    const userId = req.session.userId;
     const data = await Image.findById(req.params.id);
     const user = await User.findById(data.uploaded_by);
 
