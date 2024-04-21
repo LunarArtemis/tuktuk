@@ -8,13 +8,13 @@ const loginUserController = require('../controllers/loginUserController');
 const logoutController = require('../controllers/logoutController');
 const redirectifAuth = require('../middleware/redirectifAuth');
 const Image = require('../models/images.model.js');
-const imageLoader = require('../controllers/imageLoader');
 const countDownload = require('../controllers/countDownload');
 const countLike = require('../controllers/countLike');
 const searchController = require('../controllers/searchController');
 const pinController = require('../controllers/pinController');
 const notLogin = require('../middleware/notLogin');
 const editController = require('../controllers/editController');
+const imageLoader = require('../controllers/imageLoader');
 const updateController = require('../controllers/updateController');
 const deleteController = require('../controllers/deleteController');
 

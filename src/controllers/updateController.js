@@ -1,4 +1,5 @@
 const Image = require('../models/images.model');
+const path = require("path");
 module.exports = async (req,res) => {
     const id = req.params.id;
     new_image = req.body.old_image
@@ -9,12 +10,10 @@ module.exports = async (req,res) => {
     })
     .then(result => {
         const validationErrors = "Image update successfully";
-        req.flash('validationErrorsUpdate', validationErrors);
-        return res.redirect('/edit');
+        return res.redirect('/edit?status='+validationErrors);
     })
     .catch(err => {
         const validationErrors = "Image update failed";
-        req.flash('validationErrorsUpdate', validationErrors);
-        return res.redirect('/edit');
+        return res.redirect('/edit?status='+validationErrors);
     });
 }

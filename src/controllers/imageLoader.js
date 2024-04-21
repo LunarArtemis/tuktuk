@@ -5,10 +5,14 @@ const flash = require('connect-flash')
 
 module.exports = async (req, res) => {
     try {
+        let messageUpdate = null
+        if(req.query.status){
+            messageUpdate = req.query.status
+        }
         const images = await Image.find({ uploaded_by: req.session.userId });
-        const validationErrors = null;
-        req.flash('validationErrorsUpdate', validationErrors);
-        res.render(path.join(`${__dirname}/../views/edit.ejs`), { images });
+        res.render(path.join(`${__dirname}/../views/edit.ejs`), { 
+            images, messageUpdate: messageUpdate
+        });
     } catch (err) {
         console.error(err);
         res.status(500).send('Server Error');

@@ -1,4 +1,5 @@
 const path = require("path");
+const imageLoader = require('../controllers/imageLoader');
 
 const home = (req,res) => {
     res.render(path.join(`${__dirname}/../views/home.ejs`))
@@ -12,12 +13,6 @@ const upload = (req,res) =>{
         data:data
     })
     
-}
-const edit = (req,res) =>{
-    res.render(path.join(`${__dirname}/../views/edit.ejs`),{
-        messageUpdate: req.flash('validationErrorsUpdate'),
-        success: success
-    })
 }
 
 const login = (req,res)=>{
@@ -37,14 +32,16 @@ const login = (req,res)=>{
 
 }
 const edit_images = (req,res)=>{
-     res.render(path.join(`${__dirname}/../views/edit_images.ejs`))
+     res.render(path.join(`${__dirname}/../views/edit_images.ejs`),{
+     messageUpdate: req.flash('validationErrorsUpdate'),
+     success: success
+    })
 }
 
 module.exports = {
     getHome: home,
     getUpload: upload,
     getLogin: login,
-    getEdit: edit,
     getEditImages: edit_images
 }
 
