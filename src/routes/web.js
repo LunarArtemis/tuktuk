@@ -16,6 +16,7 @@ const pinController = require('../controllers/pinController');
 const notLogin = require('../middleware/notLogin');
 const editController = require('../controllers/editController');
 const updateController = require('../controllers/updateController');
+const deleteController = require('../controllers/deleteController');
 
 let routes = (app) => {
     app.set('view engine', 'ejs');
