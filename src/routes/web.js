@@ -17,6 +17,7 @@ const editController = require('../controllers/editController');
 const imageLoader = require('../controllers/imageLoader');
 const updateController = require('../controllers/updateController');
 const deleteController = require('../controllers/deleteController');
+const deleteImageMiddleware = require('../middleware/deleteImage'); 
 
 let routes = (app) => {
     app.set('view engine', 'ejs');
@@ -36,12 +37,14 @@ let routes = (app) => {
     router.get('/pin/:id', pinController);
     router.get('/edit/:id', notLogin,editController)
     router.get('/edit_images',notLogin,webController.getEditImages);
+    router.get('/delete/:id',deleteImageMiddleware,deleteController)
     //post
     router.post('/user/upload',upload.single("fileInput"), uploadController.uploadFiles);
     router.post('/user/register',redirectifAuth,storeController)
     router.post('/user/login',redirectifAuth,loginUserController)
     router.post('/like/:id', notLogin, countLike);
     router.post('/update/:id',upload.single("fileInput"),updateController)
+   
 
     return app.use("/",router);
 }
