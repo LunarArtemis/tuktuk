@@ -1,4 +1,5 @@
 // Import any necessary modules or dependencies
+const UserModel = require('../models/User.js');
 const Image = require('../models/images.model');
 // Define the middleware function
 const deleteImageMiddleware = async (req, res, next) => {
@@ -6,8 +7,14 @@ const deleteImageMiddleware = async (req, res, next) => {
     if (req.session.userId && req.params.id) {
         const userId = req.session.userId;
         const imageId = req.params.id;
+        const User = await UserModel.findById(userId);
         try {
-            const image = await Image.findOne({ _id: imageId, uploaded_by: userId });
+            let image = null
+            if(User.role == 'member') {
+                image = await Image.findOne({ _id: imageId, uploaded_by: userId });
+            }else if(User.role == 'admin' || User.role == 'staff'){
+                image = await Image.findOne({ _id: imageId });
+            }
             if (!image) {
                 // If the image doesn't exist or the user doesn't own it, return an error response
                 console.log('You are not authorized to delete this image.');
