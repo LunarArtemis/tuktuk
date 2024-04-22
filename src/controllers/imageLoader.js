@@ -12,7 +12,8 @@ module.exports = async (req, res) => {
         if (user.role == 'member') {
             const images = await Image.find({ uploaded_by: req.session.userId });
             res.render(path.join(`${__dirname}/../views/edit.ejs`), { 
-                images, messageUpdate: messageUpdate
+                images, messageUpdate: messageUpdate,
+                UserModel: user.username
             });
         }else if(user.role == 'admin' || user.role == 'staff'){
             const images = await Image.find();
