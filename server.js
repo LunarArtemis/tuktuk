@@ -48,12 +48,6 @@ app.set('views' , path.join(__dirname, 'src/views'));
 app.set('view engine', 'ejs');
 initRoutes(app);
 
-// db.sequelize.sync({force:true}).then(() => {
-//     console.log('Drop and Resync db');
-// })
-//db.sequelize.sync();
-
-
 app.use('/',(req,res)=>{
     res.status(404).send(`
     <!DOCTYPE html>

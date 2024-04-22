@@ -18,7 +18,8 @@ module.exports = async (req, res) => {
         }else if(user.role == 'admin' || user.role == 'staff'){
             const images = await Image.find();
             res.render(path.join(`${__dirname}/../views/edit.ejs`), { 
-                images, messageUpdate: messageUpdate
+                images, messageUpdate: messageUpdate,
+                UserModel: user.username
             });
         }else{
             res.redirect('/login')
