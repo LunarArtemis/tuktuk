@@ -1,24 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuites name="jest tests" tests="7" failures="1" errors="0" time="9.883">
-  <testsuite name="App UI" errors="0" failures="1" skipped="0" timestamp="2024-04-24T06:40:12" time="9.851" tests="7">
-    <testcase classname="App UI should have a title" name="App UI should have a title" time="0.521">
+<testsuites name="jest tests" tests="9" failures="1" errors="0" time="16.684">
+  <testsuite name="App UI" errors="0" failures="1" skipped="0" timestamp="2024-04-24T07:47:28" time="16.59" tests="9">
+    <testcase classname="App UI should have a title" name="App UI should have a title" time="0.572">
     </testcase>
-    <testcase classname="App UI should have a header" name="App UI should have a header" time="0.18">
+    <testcase classname="App UI should have a header" name="App UI should have a header" time="0.202">
     </testcase>
-    <testcase classname="Login Test should log in with incorrect credentials" name="Login Test should log in with incorrect credentials" time="1.571">
+    <testcase classname="Login Test should log in with incorrect credentials" name="Login Test should log in with incorrect credentials" time="1.682">
     </testcase>
-    <testcase classname="Login Test should log in with correct credentials" name="Login Test should log in with correct credentials" time="1.321">
+    <testcase classname="Login Test should log in with correct credentials" name="Login Test should log in with correct credentials" time="1.323">
     </testcase>
-    <testcase classname="Login Test should go to image and like image" name="Login Test should go to image and like image" time="1.51">
-      <failure>Error: expect(received).toBe(expected) // Object.is equality
-
-Expected: &quot;Likes: 2&quot;
-Received: &quot;Likes: 3&quot;
-    at Object.toBe (/Users/lunar/Desktop/tuktuk/test/app.ui.test.js:91:32)</failure>
+    <testcase classname="Login Test should go to image and like image" name="Login Test should go to image and like image" time="2.467">
     </testcase>
-    <testcase classname="Download Test should navigate to the correct URL when the first image is clicked" name="Download Test should navigate to the correct URL when the first image is clicked" time="0.594">
+    <testcase classname="Login Test should go to image and unlike image" name="Login Test should go to image and unlike image" time="2.441">
     </testcase>
-    <testcase classname="Download Test should download the image when the download button is clicked" name="Download Test should download the image when the download button is clicked" time="1.108">
+    <testcase classname="Download Test should navigate to the correct URL when the first image is clicked" name="Download Test should navigate to the correct URL when the first image is clicked" time="0.753">
+    </testcase>
+    <testcase classname="Download Test should download the image when the download button is clicked" name="Download Test should download the image when the download button is clicked" time="1.12">
+    </testcase>
+    <testcase classname="Search Test should search for an image" name="Search Test should search for an image" time="0.417">
+      <failure>NoSuchElementError: no such element: Unable to locate element: {&quot;method&quot;:&quot;css selector&quot;,&quot;selector&quot;:&quot;*[id=&quot;search-field&quot;]&quot;}
+  (Session info: chrome=124.0.6367.61)
+    at Object.throwDecodedError (C:\cygwin64\home\M6xbo\tuktuk\node_modules\selenium-webdriver\lib\error.js:521:15)
+    at parseHttpResponse (C:\cygwin64\home\M6xbo\tuktuk\node_modules\selenium-webdriver\lib\http.js:513:13)
+    at Executor.execute (C:\cygwin64\home\M6xbo\tuktuk\node_modules\selenium-webdriver\lib\http.js:446:28)
+    at processTicksAndRejections (node:internal/process/task_queues:96:5)
+    at Driver.execute (C:\cygwin64\home\M6xbo\tuktuk\node_modules\selenium-webdriver\lib\webdriver.js:740:17)
+    at Object.&lt;anonymous&gt; (C:\cygwin64\home\M6xbo\tuktuk\test\app.ui.test.js:183:27)</failure>
     </testcase>
   </testsuite>
 </testsuites>

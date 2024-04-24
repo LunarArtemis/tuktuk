@@ -84,19 +84,34 @@ describe('Login Test', function() {
         await driver.wait(until.urlMatches(/^http:\/\/localhost:3000\/pin\/.+/), 5000); // waits up to 5000ms for the URL to match the pattern
         
         let likeButton = await driver.findElement(By.id('like-button')); // finds the like button
-        let likeCount = await driver.findElement(By.id('like-count')).getText(); // finds the like count
-        if (likeCount === 'Likes: 3') {
-            await likeButton.click();
-            await driver.sleep(1000); // Add delay
-            expect (likeCount).toBe('Likes: 2');
-        }
-        else if (likeCount === 'Likes: 2') {
-            await likeButton.click();
-            await driver.sleep(1000); // Add delay
-            expect (likeCount).toBe('Likes: 3');
-        }
+        let likeCountBefore = await driver.findElement(By.id('like-count')).getText(); // finds the like count
+        console.log('liked');
+        console.log(likeCountBefore);
+        await likeButton.click();
+        await driver.sleep(2000); // Add delay
+        let likeCountAfter = await driver.findElement(By.id('like-count')).getText();
+        console.log(likeCountAfter);
+        expect (likeCountAfter).toBe('Likes: 1');
     });
 
+    it('should go to image and unlike image', async function() {
+        await driver.get('http://localhost:3000'); // replace with your page URL
+    
+        let firstImage = await driver.findElement(By.css('#card-grid img')); // finds the first image in the card grid
+        await firstImage.click();
+    
+        await driver.wait(until.urlMatches(/^http:\/\/localhost:3000\/pin\/.+/), 5000); // waits up to 5000ms for the URL to match the pattern
+        
+        let likeButton = await driver.findElement(By.id('like-button')); // finds the like button
+        let likeCountBefore = await driver.findElement(By.id('like-count')).getText(); // finds the like count
+        console.log('unliked');
+        console.log(likeCountBefore);
+        await likeButton.click();
+        await driver.sleep(2000); // Add delay
+        let likeCountAfter = await driver.findElement(By.id('like-count')).getText();
+        console.log(likeCountAfter);
+        expect (likeCountAfter).toBe('Likes: 0');
+    });
 
     afterAll(async function() {
         await driver.quit();
@@ -152,4 +167,29 @@ describe('Download Test', function() {
     afterAll(async function() {
         await driver.quit();
     }, 10000);
+});
+
+//search test
+describe('Search Test', function() {
+    let driver;
+    
+    beforeAll(async function() {
+        driver = await new Builder().forBrowser('chrome').build();
+    });
+
+    it('should search for an image', async function() {
+        await driver.get('http://localhost:3000'); // replace with your page URL
+    
+        let searchField = await driver.findElement(By.id('search-field')); // finds the search field
+        await searchField.sendKeys('cat', Key.RETURN); // types 'cat' into the search field and presses Enter
+    
+        await driver.wait(until.urlMatches(/^http:\/\/localhost:3000\/search\?q=cat/), 5000); // waits up to 5000ms for the URL to match the pattern
+        
+        let currentUrl = await driver.getCurrentUrl();
+        expect(currentUrl).toMatch(/^http:\/\/localhost:3000\/search\?q=pang/); // expects the current URL to start with 'http://localhost:3000/search?q=' followed by 'cat'
+    });
+
+    afterAll(async function() {
+        await driver.quit();
+    });
 });
