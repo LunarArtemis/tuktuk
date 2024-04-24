@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuites name="jest tests" tests="4" failures="0" errors="0" time="5.701">
-  <testsuite name="App UI" errors="0" failures="0" skipped="0" timestamp="2024-04-24T05:48:40" time="5.646" tests="4">
-    <testcase classname="App UI should have a title" name="App UI should have a title" time="0.527">
+<testsuites name="jest tests" tests="4" failures="0" errors="0" time="8.825">
+  <testsuite name="App UI" errors="0" failures="0" skipped="0" timestamp="2024-04-24T05:50:44" time="8.786" tests="4">
+    <testcase classname="App UI should have a title" name="App UI should have a title" time="0.558">
     </testcase>
-    <testcase classname="App UI should have a header" name="App UI should have a header" time="0.176">
+    <testcase classname="App UI should have a header" name="App UI should have a header" time="0.197">
     </testcase>
-    <testcase classname="Login Test should log in with incorrect credentials" name="Login Test should log in with incorrect credentials" time="0.85">
+    <testcase classname="Login Test should log in with incorrect credentials" name="Login Test should log in with incorrect credentials" time="2.799">
     </testcase>
-    <testcase classname="Login Test should log in with correct credentials" name="Login Test should log in with correct credentials" time="0.689">
+    <testcase classname="Login Test should log in with correct credentials" name="Login Test should log in with correct credentials" time="2.373">
     </testcase>
   </testsuite>
 </testsuites>

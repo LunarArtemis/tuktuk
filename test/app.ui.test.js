@@ -1,7 +1,8 @@
-require('chromedriver');
-
 const { Builder, By, Key, until } = require('selenium-webdriver');
 const assert = require('assert');
+
+require('chromedriver');
+
 
 describe('App UI', function() {
     let driver;
@@ -44,6 +45,8 @@ describe('Login Test', function() {
         let loginButton = await driver.findElement(By.css('button[type="submit"]')); // replace with your login button selector
         await loginButton.click();
 
+        await driver.sleep(2000); // Add delay
+
         // after login check if the user is redirected to home page
         await driver.wait(until.urlIs('http://localhost:3000/login')); // replace with your home page URL
     });
@@ -60,6 +63,8 @@ describe('Login Test', function() {
         let loginButton = await driver.findElement(By.css('button[type="submit"]')); // replace with your login button selector
         await loginButton.click();
 
+        await driver.sleep(2000); // Add delay
+
         // after login check if the user is redirected to home page
         await driver.wait(until.urlIs('http://localhost:3000/')); // replace with your home page URL
     });
@@ -68,4 +73,3 @@ describe('Login Test', function() {
         await driver.quit();
     });
 });
-
