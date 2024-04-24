@@ -1,5 +1,11 @@
-const { Builder, By, Key, until } = require('selenium-webdriver');
+const { Builder, By, Key, until, Capabilities } = require('selenium-webdriver');
+const chrome = require('selenium-webdriver/chrome');
 const assert = require('assert');
+
+const path = require('path');
+const fs = require('fs');
+const { exec } = require('child_process');
+const { execPath } = require('process');
 
 require('chromedriver');
 
@@ -28,7 +34,7 @@ describe('App UI', function() {
 
 describe('Login Test', function() {
     let driver;
-
+    
     beforeAll(async function() {
         driver = await new Builder().forBrowser('chrome').build();
     });
@@ -45,7 +51,7 @@ describe('Login Test', function() {
         let loginButton = await driver.findElement(By.css('button[type="submit"]')); // replace with your login button selector
         await loginButton.click();
 
-        await driver.sleep(2000); // Add delay
+        await driver.sleep(1000); // Add delay
 
         // after login check if the user is redirected to home page
         await driver.wait(until.urlIs('http://localhost:3000/login')); // replace with your home page URL
@@ -63,13 +69,87 @@ describe('Login Test', function() {
         let loginButton = await driver.findElement(By.css('button[type="submit"]')); // replace with your login button selector
         await loginButton.click();
 
-        await driver.sleep(2000); // Add delay
+        await driver.sleep(1000); // Add delay
 
         // after login check if the user is redirected to home page
         await driver.wait(until.urlIs('http://localhost:3000/')); // replace with your home page URL
     });
 
+    it('should go to image and like image', async function() {
+        await driver.get('http://localhost:3000'); // replace with your page URL
+    
+        let firstImage = await driver.findElement(By.css('#card-grid img')); // finds the first image in the card grid
+        await firstImage.click();
+    
+        await driver.wait(until.urlMatches(/^http:\/\/localhost:3000\/pin\/.+/), 5000); // waits up to 5000ms for the URL to match the pattern
+        
+        let likeButton = await driver.findElement(By.id('like-button')); // finds the like button
+        let likeCount = await driver.findElement(By.id('like-count')).getText(); // finds the like count
+        if (likeCount === 'Likes: 3') {
+            await likeButton.click();
+            await driver.sleep(1000); // Add delay
+            expect (likeCount).toBe('Likes: 2');
+        }
+        else if (likeCount === 'Likes: 2') {
+            await likeButton.click();
+            await driver.sleep(1000); // Add delay
+            expect (likeCount).toBe('Likes: 3');
+        }
+    });
+
+
     afterAll(async function() {
         await driver.quit();
     });
+});
+
+// Download test
+describe('Download Test', function() {
+    let driver;
+    let downloadDir = path.join(__dirname, 'downloads');
+
+    beforeAll(async function() {
+        let chromeOptions = new chrome.Options();
+        chromeOptions.setUserPreferences({
+            'download.default_directory': downloadDir,
+            'download.prompt_for_download': false,
+            'download.directory_upgrade': true,
+            'safebrowsing.enabled': true
+        });
+
+        driver = await new Builder().forBrowser('chrome').setChromeOptions(chromeOptions).build();
+    });
+
+    it('should navigate to the correct URL when the first image is clicked', async function() {
+        await driver.get('http://localhost:3000'); // replace with your page URL
+    
+        let firstImage = await driver.findElement(By.css('#card-grid img')); // finds the first image in the card grid
+        await firstImage.click();
+    
+        await driver.wait(until.urlMatches(/^http:\/\/localhost:3000\/pin\/.+/), 5000); // waits up to 5000ms for the URL to match the pattern
+    
+        let currentUrl = await driver.getCurrentUrl();
+        expect(currentUrl).toMatch(/^http:\/\/localhost:3000\/pin\/.+/); // expects the current URL to start with 'http://localhost:3000/pin/' followed by any characters
+        
+    });
+
+    it('should download the image when the download button is clicked', async function() {
+        let downloadButton = await driver.findElement(By.id('download-btn')); // finds the download button
+        await downloadButton.click();
+    
+        await driver.wait(async function() {
+            let files = await fs.promises.readdir(downloadDir);
+            return files.length > 0;
+        }, 5000); // waits up to 5000ms for the download to complete
+    
+        let files = await fs.promises.readdir(downloadDir);
+        expect(files.length).toBeGreaterThan(0); // expects the download directory to contain at least one file
+
+        await driver.sleep(1000); // Add delay
+    });
+
+
+    afterAll(async function() {
+        await driver.quit();
+    }, 10000);
 });
