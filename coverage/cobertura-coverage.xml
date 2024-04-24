@@ -1,42 +1,9 @@
 <?xml version="1.0" ?>
 <!DOCTYPE coverage SYSTEM "http://cobertura.sourceforge.net/xml/coverage-04.dtd">
-<coverage lines-valid="13" lines-covered="13" line-rate="1" branches-valid="0" branches-covered="0" branch-rate="1" timestamp="1711663716441" complexity="0" version="0.1">
+<coverage lines-valid="0" lines-covered="0" line-rate="NaN" branches-valid="0" branches-covered="0" branch-rate="NaN" timestamp="1713933191478" complexity="0" version="0.1">
   <sources>
-    <source>C:\Users\seaza\Documents\GitHub\tuktuk</source>
+    <source>/Users/lunar/Desktop/tuktuk</source>
   </sources>
   <packages>
-    <package name="main" line-rate="1" branch-rate="1">
-      <classes>
-        <class name="User.js" filename="src\models\User.js" line-rate="1" branch-rate="1">
-          <methods>
-            <method name="(anonymous_0)" hits="3" signature="()V">
-              <lines>
-                <line number="22" hits="3"/>
-              </lines>
-            </method>
-            <method name="(anonymous_1)" hits="3" signature="()V">
-              <lines>
-                <line number="25" hits="3"/>
-              </lines>
-            </method>
-          </methods>
-          <lines>
-            <line number="1" hits="1" branch="false"/>
-            <line number="2" hits="1" branch="false"/>
-            <line number="3" hits="1" branch="false"/>
-            <line number="5" hits="1" branch="false"/>
-            <line number="6" hits="1" branch="false"/>
-            <line number="22" hits="1" branch="false"/>
-            <line number="23" hits="3" branch="false"/>
-            <line number="24" hits="3" branch="false"/>
-            <line number="25" hits="3" branch="false"/>
-            <line number="26" hits="3" branch="false"/>
-            <line number="27" hits="3" branch="false"/>
-            <line number="33" hits="1" branch="false"/>
-            <line number="34" hits="1" branch="false"/>
-          </lines>
-        </class>
-      </classes>
-    </package>
   </packages>
 </coverage>
