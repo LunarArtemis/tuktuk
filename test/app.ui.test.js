@@ -180,14 +180,14 @@ describe('Search Test', function() {
     it('should search for an image', async function() {
         await driver.get('http://localhost:3000'); // replace with your page URL
     
-        let searchField = await driver.findElement(By.id('search-field')); // finds the search field
-        await searchField.sendKeys('cat', Key.RETURN); // types 'cat' into the search field and presses Enter
+        let searchField = await driver.findElement(By.id('searchInput')); // finds the search field
+        await searchField.sendKeys('pang', Key.RETURN); // types 'pang' into the search field and presses Enter
     
-        await driver.wait(until.urlMatches(/^http:\/\/localhost:3000\/search\?q=cat/), 5000); // waits up to 5000ms for the URL to match the pattern
-        
+        await driver.sleep(2000); // Add delay
+    
         let currentUrl = await driver.getCurrentUrl();
-        expect(currentUrl).toMatch(/^http:\/\/localhost:3000\/search\?q=pang/); // expects the current URL to start with 'http://localhost:3000/search?q=' followed by 'cat'
-    });
+        expect(currentUrl).toEqual('http://localhost:3000/search/pang'); // expects the current URL to be 'http://localhost:3000/search/pang'
+    }, 10000);
 
     afterAll(async function() {
         await driver.quit();
