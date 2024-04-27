@@ -90,7 +90,7 @@ stages:
 - stage: Deploy
   displayName: Deploy stage
   dependsOn: Build
-  condition: ture
+  condition: true
   jobs:
   - deployment: Deploy
     displayName: Deploy
