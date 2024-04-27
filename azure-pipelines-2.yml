@@ -9,13 +9,13 @@ trigger:
 variables:
 
   # Azure Resource Manager connection created during pipeline creation
-  azureSubscription: '92644b76-36f2-48db-b630-8cb29e9f60d3'
+  azureSubscription: '786009f0-472d-4060-ae69-6e95b153c5b0'
 
   # Web app name
-  webAppName: 'tuktuk'
+  webAppName: ''
 
   # Environment name
-  environmentName: 'tuktuk'
+  environmentName: ''
 
   # Agent VM image name
   vmImageName: 'ubuntu-latest'
@@ -29,22 +29,18 @@ stages:
     pool:
       vmImage: $(vmImageName)
 
+
     steps:
     - task: NodeTool@0
       inputs:
-        versionSpec: '18.x'
+        versionSpec: '20.x'
       displayName: 'Install Node.js'
+
 
     - script: |
         npm install
-      displayName: 'npm install'
-
-    - task: CmdLine@2
-      inputs:
-        script: |
-          npm run test --if-present
-      displayName: 'npm test'
-    
+        npm run test --if-present
+      displayName: 'npm install, build and test'
 
 
     - task: PublishTestResults@2
@@ -53,6 +49,8 @@ stages:
         testResultsFormat: 'JUnit'
         testResultsFiles: '**/test-results/jest/*.xml'
         searchFolder: '$(System.DefaultWorkingDirectory)'
+
+
 
 
     - task: PublishCodeCoverageResults@1
@@ -73,7 +71,6 @@ stages:
           ls -l 
 
 
-
     - task: ArchiveFiles@2
       displayName: 'Archive files'
       condition: always()
@@ -84,29 +81,18 @@ stages:
         archiveFile: $(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip
         replaceExistingArchive: true
 
+
     - upload: $(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip
+      condition: always()
       artifact: drop
 
-- stage: Deploy
-  displayName: Deploy stage
-  dependsOn: Build
-  condition: true
-  jobs:
-  - deployment: Deploy
-    displayName: Deploy
-    environment: $(environmentName)
-    pool:
-      vmImage: $(vmImageName)
-    strategy:
-      runOnce:
-        deploy:
-          steps:
-          - task: AzureWebApp@1
-            displayName: 'Azure Web App Deploy: tuktuk'
-            inputs:
-              azureSubscription: $(azureSubscription)
-              appType: webAppLinux
-              appName: $(webAppName)
-              runtimeStack: 'NODE|10.10'
-              package: $(Pipeline.Workspace)/drop/$(Build.BuildId).zip
-              startUpCommand: 'npm run dev'
+
+    - task: AzureRmWebAppDeployment@4
+      inputs:
+        ConnectionType: 'AzureRM'
+        azureSubscription: $(azureSubscription)
+        appType: 'webAppLinux'
+        WebAppName: $(webAppName)
+        packageForLinux: '$(System.DefaultWorkingDirectory)/**/*.zip'
+        RuntimeStack: 'NODE|20-lts'
+        StartupCommand: 'npm run dev'
