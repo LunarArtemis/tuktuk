@@ -12,10 +12,10 @@ variables:
   azureSubscription: '3535db7f-15bd-4bd7-b45e-3fc3599ccaa5'
 
   # Web app name
-  webAppName: 'tuktuk'
+  webAppName: 'tuktukpreproduct'
 
   # Environment name
-  environmentName: 'tuktuk'
+  environmentName: 'tuktukpreproduct'
 
   # Agent VM image name
   vmImageName: 'ubuntu-latest'
@@ -102,7 +102,7 @@ stages:
         deploy:
           steps:
           - task: AzureWebApp@1
-            displayName: 'Azure Web App Deploy: tuktuk'
+            displayName: 'Azure Web App Deploy: tuktukpreproduct'
             inputs:
               azureSubscription: $(azureSubscription)
               appType: webAppLinux
