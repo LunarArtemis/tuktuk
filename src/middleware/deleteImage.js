@@ -17,7 +17,7 @@ const deleteImageMiddleware = async (req, res, next) => {
             }
             if (!image) {
                 // If the image doesn't exist or the user doesn't own it, return an error response
-                console.log('You are not authorized to delete this image.');
+                console.log("You are not authorized to delete this image or image doesn't exit.");
                 res.status(403).json({ error: "You are not authorized to delete this image or image doesn't exit." });
             } else {
                 next();
