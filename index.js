@@ -85,7 +85,7 @@ app.use('/',(req,res)=>{
     </html>
     `)
 })
-let port = process.env.PORT || 3000;
+let port = process.env.PORT || 8080;
 app.listen(port, () => {
     console.log(`Server Running at localhost:${port}`);
 })
