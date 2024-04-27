@@ -63,7 +63,7 @@ stages:
       condition: always()
       inputs:
         script: |
-          ls -R $(Build.ArtifactStagingDirectory)
+          ls -R $(System.DefaultWorkingDirectory)
           echo "Clean folder"
           rm -rfv package-lock.json
           rm -rfv .git
