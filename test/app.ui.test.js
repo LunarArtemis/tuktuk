@@ -45,7 +45,7 @@ describe('Login Test', function() {
         let usernameField = await driver.findElement(By.name('username')); // replace with your username field name
         let passwordField = await driver.findElement(By.name('password')); // replace with your password field name
 
-        await usernameField.sendKeys('testuser'); // replace with your test username
+        await usernameField.sendKeys('userUi'); // replace with your test username
         await passwordField.sendKeys('wrongpassword'); // replace with your wrong password
 
         let loginButton = await driver.findElement(By.css('button[type="submit"]')); // replace with your login button selector
@@ -63,7 +63,7 @@ describe('Login Test', function() {
         let usernameField = await driver.findElement(By.name('username')); // replace with your username field name
         let passwordField = await driver.findElement(By.name('password')); // replace with your password field name
 
-        await usernameField.sendKeys('testuser'); // replace with your test username
+        await usernameField.sendKeys('userUi'); // replace with your test username
         await passwordField.sendKeys('testpassword'); // replace with your test password
 
         let loginButton = await driver.findElement(By.css('button[type="submit"]')); // replace with your login button selector

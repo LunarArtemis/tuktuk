@@ -1,23 +1,49 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuites name="jest tests" tests="9" failures="0" errors="0" time="18.803">
-  <testsuite name="App UI" errors="0" failures="0" skipped="0" timestamp="2024-04-25T02:22:51" time="18.751" tests="9">
-    <testcase classname="App UI should have a title" name="App UI should have a title" time="0.521">
+<testsuites name="jest tests" tests="20" failures="0" errors="0" time="21.671">
+  <testsuite name="Image Model" errors="0" failures="0" skipped="0" timestamp="2024-04-27T13:57:19" time="2.094" tests="5">
+    <testcase classname="Image Model should create a new image" name="Image Model should create a new image" time="0.301">
     </testcase>
-    <testcase classname="App UI should have a header" name="App UI should have a header" time="0.248">
+    <testcase classname="Image Model should find an image by title" name="Image Model should find an image by title" time="0.034">
     </testcase>
-    <testcase classname="Login Test should log in with incorrect credentials" name="Login Test should log in with incorrect credentials" time="1.755">
+    <testcase classname="Image Model should update an image" name="Image Model should update an image" time="0.11">
     </testcase>
-    <testcase classname="Login Test should log in with correct credentials" name="Login Test should log in with correct credentials" time="1.378">
+    <testcase classname="Image Model should delete an image" name="Image Model should delete an image" time="0.079">
     </testcase>
-    <testcase classname="Login Test should go to image and like image" name="Login Test should go to image and like image" time="2.652">
+    <testcase classname="Image Model should not find a non-existing image" name="Image Model should not find a non-existing image" time="0.033">
     </testcase>
-    <testcase classname="Login Test should go to image and unlike image" name="Login Test should go to image and unlike image" time="2.431">
+  </testsuite>
+  <testsuite name="User Model" errors="0" failures="0" skipped="0" timestamp="2024-04-27T13:57:19" time="2.189" tests="6">
+    <testcase classname="User Model should create a new user" name="User Model should create a new user" time="0.145">
     </testcase>
-    <testcase classname="Download Test should navigate to the correct URL when the first image is clicked" name="Download Test should navigate to the correct URL when the first image is clicked" time="1.08">
+    <testcase classname="User Model should find a user by username" name="User Model should find a user by username" time="0.034">
     </testcase>
-    <testcase classname="Download Test should download the image when the download button is clicked" name="Download Test should download the image when the download button is clicked" time="1.129">
+    <testcase classname="User Model should update a user" name="User Model should update a user" time="0.164">
     </testcase>
-    <testcase classname="Search Test should search for an image" name="Search Test should search for an image" time="2.883">
+    <testcase classname="User Model should delete a user" name="User Model should delete a user" time="0.071">
+    </testcase>
+    <testcase classname="User Model should not find a non-existing user" name="User Model should not find a non-existing user" time="0.036">
+    </testcase>
+    <testcase classname="User Model should hash the password before saving" name="User Model should hash the password before saving" time="0.119">
+    </testcase>
+  </testsuite>
+  <testsuite name="App UI" errors="0" failures="0" skipped="0" timestamp="2024-04-27T13:57:19" time="21.357" tests="9">
+    <testcase classname="App UI should have a title" name="App UI should have a title" time="0.497">
+    </testcase>
+    <testcase classname="App UI should have a header" name="App UI should have a header" time="0.47">
+    </testcase>
+    <testcase classname="Login Test should log in with incorrect credentials" name="Login Test should log in with incorrect credentials" time="1.781">
+    </testcase>
+    <testcase classname="Login Test should log in with correct credentials" name="Login Test should log in with correct credentials" time="1.458">
+    </testcase>
+    <testcase classname="Login Test should go to image and like image" name="Login Test should go to image and like image" time="2.838">
+    </testcase>
+    <testcase classname="Login Test should go to image and unlike image" name="Login Test should go to image and unlike image" time="2.762">
+    </testcase>
+    <testcase classname="Download Test should navigate to the correct URL when the first image is clicked" name="Download Test should navigate to the correct URL when the first image is clicked" time="1.384">
+    </testcase>
+    <testcase classname="Download Test should download the image when the download button is clicked" name="Download Test should download the image when the download button is clicked" time="1.128">
+    </testcase>
+    <testcase classname="Search Test should search for an image" name="Search Test should search for an image" time="2.914">
     </testcase>
   </testsuite>
 </testsuites>
