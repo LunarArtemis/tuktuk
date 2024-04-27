@@ -33,7 +33,7 @@ stages:
     steps:
     - task: NodeTool@0
       inputs:
-        versionSpec: '10.x'
+        versionSpec: '20.x'
       displayName: 'Install Node.js'
 
 
@@ -94,5 +94,5 @@ stages:
         appType: 'webAppLinux'
         WebAppName: $(webAppName)
         packageForLinux: '$(System.DefaultWorkingDirectory)/**/*.zip'
-        RuntimeStack: 'NODE|10.10'
+        RuntimeStack: 'NODE|20-lts'
         StartupCommand: 'npm run dev'
