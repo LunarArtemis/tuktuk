@@ -3,29 +3,22 @@
 # Add steps that analyze code, save build artifacts, deploy, and more:
 # https://docs.microsoft.com/azure/devops/pipelines/languages/javascript
 
-
 trigger:
 - main
 
-
 variables:
-
 
   # Azure Resource Manager connection created during pipeline creation
   azureSubscription: 'be6e31ef-f817-4f80-a04e-eedf20598b04'
 
-
   # Web app name
   webAppName: 'tuktuk'
-
 
   # Environment name
   environmentName: 'tuktuk'
 
-
   # Agent VM image name
   vmImageName: 'ubuntu-latest'
-
 
 stages:
 - stage: Build
@@ -40,7 +33,7 @@ stages:
     steps:
     - task: NodeTool@0
       inputs:
-        versionSpec: '10.x'
+        versionSpec: '20.x'
       displayName: 'Install Node.js'
 
 
@@ -70,6 +63,7 @@ stages:
       condition: always()
       inputs:
         script: |
+          ls -R $(System.DefaultWorkingDirectory)
           echo "Clean folder"
           rm -rfv package-lock.json
           rm -rfv .git
@@ -101,6 +95,5 @@ stages:
         appType: 'webAppLinux'
         WebAppName: $(webAppName)
         packageForLinux: '$(System.DefaultWorkingDirectory)/**/*.zip'
-        RuntimeStack: 'NODE|10.10'
+        RuntimeStack: 'NODE|20-lts'
         StartupCommand: 'npm run dev'
-
