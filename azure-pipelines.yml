@@ -110,4 +110,4 @@ stages:
               runtimeStack: 'NODE|18-lts'
               package: $(Pipeline.Workspace)/drop/$(Build.BuildId).zip
               enableCustomDeployment: true
-              customDeployment: 'npm install --production && npm run dev'
+              customDeployment: 'npm install --production && npm run start'
