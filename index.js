@@ -85,7 +85,7 @@ app.use('/',(req,res)=>{
     </html>
     `)
 })
-let port = process.env.PORT || 443;
+const port = process.env.port || 8080;
 app.listen(port, () => {
     console.log(`Server Running at localhost:${port}`);
 })
