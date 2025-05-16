@@ -30,7 +30,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "bcrypt": "^5.1.1",
+    "bcrypt": "^6.0.0",
     "body-parser": "^1.20.2",
     "chromedriver": "^123.0.4",
     "connect-flash": "^0.1.1",
@@ -50,7 +50,7 @@
     "node-mocks-http": "^1.14.1",
     "path": "^0.12.7",
     "selenium-webdriver": "^4.19.0",
-    "supertest": "^6.3.4"
+    "supertest": "^7.1.1"
   },
   "devDependencies": {
     "jest": "^29.7.0",
